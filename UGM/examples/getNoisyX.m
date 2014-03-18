@@ -10,7 +10,7 @@ title('Original X');
 
 figure;
 origX = X;
-X = X + randn(size(X))/2;
+X = X + 0.01 * randn(size(X));
 imagesc(X);
 colormap gray
 title('Noisy X');

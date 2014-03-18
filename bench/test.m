@@ -5,19 +5,24 @@ getNoisyX
 
 % No burnin, we're trying to test convergence.
 burnIn = 0;
-iterRange = 20;
-stepSize = 2;
+iterRange = 100;
+stepSize = 10;
 maxSteps = (iterRange/stepSize)
 
 % Naive Gibbs
 figure(3);
 
+edgeStruct.maxIter = iterRange;
+samplesNaiveGibbs = UGM_Sample_Gibbs(nodePot,edgePot,edgeStruct,burnIn);
+
 for i = 1:maxSteps
     edgeStruct.maxIter = i*stepSize;
 	
-    maxOfMarginalsGibbsDecode = UGM_Decode_MaxOfMarginals(nodePot,edgePot,edgeStruct, @UGM_Infer_Sample,@UGM_Sample_Gibbs,burnIn);
+%     maxOfMarginalsGibbsDecode = UGM_Decode_MaxOfMarginals(nodePot,edgePot,edgeStruct, @UGM_Infer_Sample,@UGM_Sample_Gibbs,burnIn);
 
-    reconX = reshape(maxOfMarginalsGibbsDecode -1., nRows, nCols)
+%     reconX = reshape(maxOfMarginalsGibbsDecode -1., nRows, nCols)
+    reconX = double(reshape(samplesNaiveGibbs(:,edgeStruct.maxIter) -1., ...
+                    nRows, nCols));
     errorRatesNaive(i) = (sum(sum(abs(reconX - origX)))) / nNodes
     subplot(2,5,i);
     imagesc(reconX)
@@ -69,9 +74,10 @@ figure(6);
 for i = 1:maxSteps
     edgeStruct.maxIter = i*stepSize;
 	
-    maxOfMarginalsGibbsDecode = UGM_Decode_MaxOfMarginals(nodePot,edgePot,edgeStruct, @UGM_Infer_Sample, @(nodePot, edgePot, edgeStruct, v) (samplesBlockGibbs(:, 1:edgeStruct.maxIter)) ,burnIn);
+%     maxOfMarginalsGibbsDecode = UGM_Decode_MaxOfMarginals(nodePot,edgePot,edgeStruct, @UGM_Infer_Sample, @(nodePot, edgePot, edgeStruct, v) (samplesBlockGibbs(:, 1:edgeStruct.maxIter)) ,burnIn);
 
-    reconX = reshape(maxOfMarginalsGibbsDecode -1., nRows, nCols)
+%     reconX = reshape(maxOfMarginalsGibbsDecode -1., nRows, nCols)
+    reconX = reshape(samplesBlockGibbs(:,edgeStruct.maxIter) -1., nRows, nCols)
     errorRatesBlockHF(i) = (sum(sum(abs(reconX - origX)))) / nNodes
     subplot(2,5,i);
     imagesc(reconX)
