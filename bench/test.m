@@ -5,8 +5,8 @@ getNoisyX
 
 % No burnin, we're trying to test convergence.
 burnIn = 0;
-iterRange = 100;
-stepSize = 10
+iterRange = 20;
+stepSize = 2;
 maxSteps = (iterRange/stepSize)
 
 % Naive Gibbs
@@ -49,11 +49,27 @@ for j = 1:nCols
 end
 blocks = {blocks1;blocks2};
 
+% Visualize the blocks
+figure(5)
+visual = zeros(nNodes, 1);
+for j = 1:b1Ind
+    visual(blocks2(j)) = 1;
+end
+imagesc(reshape(visual, nRows, nCols))
+colormap gray
 
+
+% Precompute the block samples, then we'll make a dummy function to do max of
+% marginals that just returns these - this way we sample iterRange times rather
+% than numsteps/2 * (iterRange + stepsize)  times
+
+samplesBlockGibbs = UGM_Sample_Block_Gibbs(nodePot,edgePot,edgeStruct,burnIn,blocks,@UGM_Sample_Tree);
+
+figure(6);
 for i = 1:maxSteps
     edgeStruct.maxIter = i*stepSize;
 	
-    maxOfMarginalsGibbsDecode = UGM_Decode_MaxOfMarginals(nodePot,edgePot,edgeStruct, @UGM_Infer_Sample,@(nodePot, edgePot, edgeStruct, v) (UGM_Sample_Block_Gibbs(nodePot, edgePot, edgeStruct, burnIn, blocks, @UGM_Sample_Tree)) ,burnIn);
+    maxOfMarginalsGibbsDecode = UGM_Decode_MaxOfMarginals(nodePot,edgePot,edgeStruct, @UGM_Infer_Sample, @(nodePot, edgePot, edgeStruct, v) (samplesBlockGibbs(:, 1:edgeStruct.maxIter)) ,burnIn);
 
     reconX = reshape(maxOfMarginalsGibbsDecode -1., nRows, nCols)
     errorRatesBlockHF(i) = (sum(sum(abs(reconX - origX)))) / nNodes
@@ -61,3 +77,6 @@ for i = 1:maxSteps
     imagesc(reconX)
     colormap gray
 end
+
+errorRatesNaive
+errorRatesBlockHF

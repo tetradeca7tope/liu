@@ -9,6 +9,7 @@ colormap gray
 title('Original X');
 
 figure;
+origX = X;
 X = X + randn(size(X))/2;
 imagesc(X);
 colormap gray
@@ -38,7 +39,7 @@ adj(sub2ind([nNodes nNodes],ind,ind+nRows)) = 1;
 adj = adj+adj';
 edgeStruct = UGM_makeEdgeStruct(adj,nStates);
 
-if 0 % Hand-picked parameters
+if 1 % Hand-picked parameters
     % Make nodePot
     nodePot = zeros(nNodes,nStates);
     nodePot(:,1) = 1./(1+exp(X(:)-.5));

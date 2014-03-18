@@ -4,8 +4,8 @@ getNoisyX
 %% Gibbs Sampling
 
 fprintf('Running Gibbs Sampler...\n');
-burnIn = 1000;
-edgeStruct.maxIter = 1000;
+burnIn = 10000;
+edgeStruct.maxIter = 100;
 samplesGibbs = UGM_Sample_Gibbs(nodePot,edgePot,edgeStruct,burnIn);
 
 figure(3);
@@ -53,12 +53,19 @@ pause
 fprintf('Running Gibbs sampler for decoding with max of marginals\n');
 maxOfMarginalsGibbsDecode = UGM_Decode_MaxOfMarginals(nodePot,edgePot,edgeStruct,@UGM_Infer_Sample,@UGM_Sample_Gibbs,burnIn);
 
+figure(7);
+imagesc(reshape(maxOfMarginalsGibbsDecode,nRows,nCols));
+colormap gray
+title('Gibbs Max of Marginals Decoding of Noisy X');
+fprintf('(paused)\n');
+pause
+
 %% Approximate Decoding with Simulated Annealing
 
 fprintf('Running Simulated Annealing for decoding\n');
 saDecoding = UGM_Decode_SimAnneal(nodePot, edgePot, edgeStruct);
 
-figure(7);
+figure(8);
 imagesc(reshape(saDecoding,nRows,nCols));
 colormap gray
 title('Simulated Annealing Decoding of Noisy X');
