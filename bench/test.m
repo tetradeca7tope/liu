@@ -1,13 +1,16 @@
 % Derived from examples in example_UGM_MCMC and example_UGM_Block
 
 %% Make noisy X
-getNoisyX
+close all;
+clear all;
+
+getNoisyX;
 
 % No burnin, we're trying to test convergence.
 burnIn = 0;
-iterRange = 100;
-stepSize = 10;
-maxSteps = (iterRange/stepSize)
+iterRange = 1000;
+maxSteps = 10;
+stepSize = iterRange/stepSize;
 
 % Naive Gibbs
 figure(3);
@@ -18,14 +21,14 @@ samplesNaiveGibbs = UGM_Sample_Gibbs(nodePot,edgePot,edgeStruct,burnIn);
 for i = 1:maxSteps
     edgeStruct.maxIter = i*stepSize;
 	
-%     maxOfMarginalsGibbsDecode = UGM_Decode_MaxOfMarginals(nodePot,edgePot,edgeStruct, @UGM_Infer_Sample,@UGM_Sample_Gibbs,burnIn);
+    maxOfMarginalsGibbsDecode = UGM_Decode_MaxOfMarginals(nodePot,edgePot,edgeStruct, @UGM_Infer_Sample,@UGM_Sample_Gibbs,burnIn);
 
-%     reconX = reshape(maxOfMarginalsGibbsDecode -1., nRows, nCols)
-    reconX = double(reshape(samplesNaiveGibbs(:,edgeStruct.maxIter) -1., ...
-                    nRows, nCols));
-    errorRatesNaive(i) = (sum(sum(abs(reconX - origX)))) / nNodes
+    reconX = reshape(maxOfMarginalsGibbsDecode -1., nRows, nCols);
+%     reconX = double(reshape(samplesNaiveGibbs(:,edgeStruct.maxIter) -1., ...
+%                     nRows, nCols));
+    errorRatesNaive(i) = (sum(sum(abs(reconX - origX)))) / nNodes;
     subplot(2,5,i);
-    imagesc(reconX)
+    imagesc(reconX);
     colormap gray
 end
 
@@ -60,7 +63,7 @@ visual = zeros(nNodes, 1);
 for j = 1:b1Ind
     visual(blocks2(j)) = 1;
 end
-imagesc(reshape(visual, nRows, nCols))
+imagesc(reshape(visual, nRows, nCols));
 colormap gray
 
 
@@ -74,15 +77,17 @@ figure(6);
 for i = 1:maxSteps
     edgeStruct.maxIter = i*stepSize;
 	
-%     maxOfMarginalsGibbsDecode = UGM_Decode_MaxOfMarginals(nodePot,edgePot,edgeStruct, @UGM_Infer_Sample, @(nodePot, edgePot, edgeStruct, v) (samplesBlockGibbs(:, 1:edgeStruct.maxIter)) ,burnIn);
+    maxOfMarginalsGibbsDecode = UGM_Decode_MaxOfMarginals(nodePot,edgePot,edgeStruct, @UGM_Infer_Sample, @(nodePot, edgePot, edgeStruct, v) (samplesBlockGibbs(:, 1:edgeStruct.maxIter)) ,burnIn);
 
-%     reconX = reshape(maxOfMarginalsGibbsDecode -1., nRows, nCols)
-    reconX = reshape(samplesBlockGibbs(:,edgeStruct.maxIter) -1., nRows, nCols)
-    errorRatesBlockHF(i) = (sum(sum(abs(reconX - origX)))) / nNodes
+    reconX = reshape(maxOfMarginalsGibbsDecode -1., nRows, nCols);
+%     reconX = reshape(samplesBlockGibbs(:,edgeStruct.maxIter) -1., nRows, nCols)
+    errorRatesBlockHF(i) = (sum(sum(abs(reconX - origX)))) / nNodes;
     subplot(2,5,i);
-    imagesc(reconX)
+    imagesc(reconX);
     colormap gray
 end
 
-errorRatesNaive
-errorRatesBlockHF
+figure;
+plot(log(errorRatesNaive), 'b-o'); hold on,
+plot(log(errorRatesBlockHF), 'g-x');
+legend('Naive', 'Blocked');
