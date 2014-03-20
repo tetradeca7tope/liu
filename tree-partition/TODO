@@ -1,0 +1,9 @@
+- Greedy Edge Selection
+    [Done] Basic logic
+    [Done] Sort by weight
+    [] Fancier getOtherNeighborColors()
+
+- Greedy Tree Growing
+    [Done] Sort by weight
+    [] Sort by something in the paper
+    [] Prevent same vertices to be added multiple times to the queue

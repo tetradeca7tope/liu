@@ -1,5 +1,5 @@
 #!/usr/bin/python
-
+from Edge import Edge
 def getOtherNeighborColors(fromNodes, excludeEdge, allEdges, colors):
 
     #TODO Use a not so brutal algo
@@ -10,20 +10,23 @@ def getOtherNeighborColors(fromNodes, excludeEdge, allEdges, colors):
         if (e.i in fromNodes) and (not e.j in fromNodes):
             if e != excludeEdge:
                 neighborColors.add(colors[e.j])
-                print "#neighbor-%d, color-%d" % (e.j, colors[e.j])
+                #print "#neighbor-%d, color-%d" % (e.j, colors[e.j])
         if (e.j in fromNodes) and (not e.i in fromNodes):
             if e != excludeEdge:
                 neighborColors.add(colors[e.i])
-                print "#neighbor-%d, color-%d" % (e.i, colors[e.i])
-    print "fromNodes", fromNodes
-    print "excludeEdge", excludeEdge
-    print "neighborColors", neighborColors
+                #print "#neighbor-%d, color-%d" % (e.i, colors[e.i])
+    #print "fromNodes", fromNodes
+    #print "excludeEdge", excludeEdge
+    #print "neighborColors", neighborColors
     return neighborColors
 
 def GreedyEdgeSelection(V, E):
     colors = [-1] * (V+1)
     #Sort Edges by weight
-    #TODO
+    print "Sorting" 
+    import operator
+    E.sort(key=operator.attrgetter('weight'), reverse=True)
+    print E
 
     #Initialize
     unusedColor = 0
@@ -75,56 +78,3 @@ def GreedyEdgeSelection(V, E):
     #TODO
 
     return T
-
-class Edge:
-    def __init__(self, edgeline):
-        args = edgeline.split(' ')
-        #self.nodes = [int(args[0]), int(args[1])]
-        self.i = int(args[0])
-        self.j = int(args[1])
-        self.weight = float(args[2])
-    
-    def __str__(self):
-        #return "(%d, %d) %f", self.i, self.j, self.weight
-        return "({0}, {1}) {2}".format(self.i, self.j, self.weight)
-'''
-    def __eq__(self, other):
-        print "Compare!"
-        if self.i != other.i:
-            return False
-        if self.j != other.j:
-            return False
-        #if self.weight != other.weight:
-        #    return false
-        print "!!Equal", self, other
-        return True
-'''
-
-def loadGraphFrom(filename):
-    f = open(filename, 'r')
-    V = int(f.readline())
-    print V
-
-    ELines = f.readlines()
-    E = []
-    for el in ELines:
-        e = Edge(el)
-        print e.i, e.j, e.weight
-        E.append(e)
-
-    f.close()
-    return V, E
-
-def main():
-    import argparse
-    parser = argparse.ArgumentParser(description="Greedy Edge Selection")
-    parser.add_argument('graphFileName', metavar='graphFile', type=str, help='Graph File Name')
-    args = parser.parse_args()
-    V, E = loadGraphFrom(args.graphFileName)
-
-    partition = GreedyEdgeSelection(V, E)
-
-    print partition
-
-if __name__ == "__main__":
-    main()
