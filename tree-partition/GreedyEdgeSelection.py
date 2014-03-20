@@ -10,20 +10,23 @@ def getOtherNeighborColors(fromNodes, excludeEdge, allEdges, colors):
         if (e.i in fromNodes) and (not e.j in fromNodes):
             if e != excludeEdge:
                 neighborColors.add(colors[e.j])
-                print "#neighbor-%d, color-%d" % (e.j, colors[e.j])
+                #print "#neighbor-%d, color-%d" % (e.j, colors[e.j])
         if (e.j in fromNodes) and (not e.i in fromNodes):
             if e != excludeEdge:
                 neighborColors.add(colors[e.i])
-                print "#neighbor-%d, color-%d" % (e.i, colors[e.i])
-    print "fromNodes", fromNodes
-    print "excludeEdge", excludeEdge
-    print "neighborColors", neighborColors
+                #print "#neighbor-%d, color-%d" % (e.i, colors[e.i])
+    #print "fromNodes", fromNodes
+    #print "excludeEdge", excludeEdge
+    #print "neighborColors", neighborColors
     return neighborColors
 
 def GreedyEdgeSelection(V, E):
     colors = [-1] * (V+1)
     #Sort Edges by weight
-    #TODO
+    print "Sorting" 
+    import operator
+    E.sort(key=operator.attrgetter('weight'), reverse=True)
+    print E
 
     #Initialize
     unusedColor = 0
@@ -87,6 +90,9 @@ class Edge:
     def __str__(self):
         #return "(%d, %d) %f", self.i, self.j, self.weight
         return "({0}, {1}) {2}".format(self.i, self.j, self.weight)
+
+    def __repr__(self):
+        return str(self)
 '''
     def __eq__(self, other):
         print "Compare!"
