@@ -1,0 +1,4 @@
+*.mex
+*.mexa64
+.DS_STORE
+*.swp
