@@ -80,7 +80,7 @@ edgePot = repmat(repblock,[1 1 edgeStruct.nEdges]);
 
 
 burnIn = 0;
-iterRange = 20;
+iterRange = 10;
 maxSteps = 10;
 stepSize = iterRange/maxSteps;
 
@@ -104,6 +104,48 @@ for i = 1:maxSteps
     imagesc(recon);
     colormap gray
 end
+
+%%% Checker
+
+%% Make Blocks
+blocks1 = [];
+blocks2 = [];
+nodeNums = reshape(1:nNodes,nRows,nCols);
+for i = 1:nCols
+  for j = 1:nRows
+     if mod(i, 2) == mod(j, 2)
+        blocks1 = [blocks1 sub2ind([nRows nCols], i, j)];
+     else
+        blocks2 = [blocks2 sub2ind([nRows nCols], i, j)];
+     end
+  end
+end
+b1Ind = nNodes/2;
+blocks = {blocks1;blocks2};
+
+%% Visualize the blocks
+figure;
+visual = zeros(nNodes, 1);
+for j = 1:b1Ind
+    visual(blocks2(j)) = 1;
+end
+imagesc(reshape(visual, nRows, nCols));
+colormap gray
+
+figure;
+for i = 1:maxSteps
+    edgeStruct.maxIter = i*stepSize;
+	
+    [nodeBel junk] = UGM_Sample_Infer_Block_Gibbs(nodePot,edgePot,edgeStruct,burnIn,blocks,@UGM_Sample_Infer_Tree);
+    [junk nodeLabels] = max(nodeBel, [], 2);
+    recon = reshape(nodeLabels, nRows, nCols);
+    errorRatesBlockCB(i) = (sum(sum(abs(1 - (recon == image))))) / nNodes
+    subplot(2,5,i);
+    imagesc(recon);
+    colormap gray
+end
+
+
 
 %%%% HF Block Gibbs sampling
 
@@ -140,29 +182,37 @@ blocks = {blocks1;blocks2};
 %colormap gray
 
 
-% Precompute the block samples, then we'll make a dummy function to do max of
-% marginals that just returns these - this way we sample iterRange times rather
-% than numsteps/2 * (iterRange + stepsize)  times
+%
+%figure(6);
+%for i = 1:maxSteps
+%    edgeStruct.maxIter = i*stepSize;
+%	
+%    maxOfMarginalsGibbsDecode = UGM_Decode_MaxOfMarginals(nodePot,edgePot,edgeStruct, @UGM_Infer_Sample, @(nodePot, edgePot, edgeStruct, v) (samplesBlockGibbs(:, 1:edgeStruct.maxIter)) ,burnIn);
+%
+%    recon = reshape(maxOfMarginalsGibbsDecode, nRows, nCols);
+%%     reconX = reshape(samplesBlockGibbs(:,edgeStruct.maxIter) -1., nRows, nCols)
+%    errorRatesBlockHF(i) = (sum(sum(abs(1 - (recon == image))))) / nNodes;
+%    subplot(2,5,i);
+%    imagesc(recon);
+%    colormap gray
+%end
 
-samplesBlockGibbs = UGM_Sample_Block_Gibbs(nodePot,edgePot,edgeStruct,burnIn,blocks,@UGM_Sample_Tree);
-
-figure(6);
+figure;
 for i = 1:maxSteps
     edgeStruct.maxIter = i*stepSize;
 	
-    maxOfMarginalsGibbsDecode = UGM_Decode_MaxOfMarginals(nodePot,edgePot,edgeStruct, @UGM_Infer_Sample, @(nodePot, edgePot, edgeStruct, v) (samplesBlockGibbs(:, 1:edgeStruct.maxIter)) ,burnIn);
-
-    recon = reshape(maxOfMarginalsGibbsDecode, nRows, nCols);
-%     reconX = reshape(samplesBlockGibbs(:,edgeStruct.maxIter) -1., nRows, nCols)
-    errorRatesBlockHF(i) = (sum(sum(abs(1 - (recon == image))))) / nNodes;
+    [nodeBel junk] = UGM_Sample_Infer_Block_Gibbs(nodePot,edgePot,edgeStruct,burnIn,blocks,@UGM_Sample_Infer_Tree);
+    [junk nodeLabels] = max(nodeBel, [], 2);
+    recon = reshape(nodeLabels, nRows, nCols);
+    errorRatesBlockHF(i) = (sum(sum(abs(1 - (recon == image))))) / nNodes
     subplot(2,5,i);
     imagesc(recon);
     colormap gray
 end
 
 figure;
-%plot(log(errorRatesNaive), 'b-o'); hold on,
-%plot(log(errorRatesBlockHF), 'g-x');
 plot(errorRatesNaive, 'b-o'); hold on,
 plot(errorRatesBlockHF, 'g-x');
-legend('Naive', 'Blocked');
+plot(errorRatesBlockCB, 'r-x');
+legend('Naive', 'Blocked', 'CB');
+

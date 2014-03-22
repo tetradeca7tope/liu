@@ -10,7 +10,7 @@ getNoisyX;
 burnIn = 0;
 iterRange = 1000;
 maxSteps = 10;
-stepSize = iterRange/stepSize;
+stepSize = iterRange/maxSteps;
 
 % Naive Gibbs
 figure(3);
