@@ -1,3 +1,7 @@
+% Modification of Kevin Schmidt's UGM package's UGM_Sample_Block_Gibbs to
+% support Rao-Blackwellized blocked tree sampling from Hamze & Feritas (see UGM
+% subdirectory for more info about UGM package)
+
 function [nodeBelHist, samples] = UGM_Sample_Infer_Block_Gibbs(nodePot,edgePot,edgeStruct,burnIn,blocks,sampleFunc, y)
 % Block Gibbs Sampling
 
