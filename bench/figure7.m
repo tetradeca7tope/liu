@@ -111,12 +111,12 @@ end
 blocks1 = [];
 blocks2 = [];
 nodeNums = reshape(1:nNodes,nRows,nCols);
-for i = 1:nCols
-  for j = 1:nRows
+for j = 1:nCols
+  for i = 1:nRows
      if mod(i, 2) == mod(j, 2)
-        blocks1 = [blocks1 sub2ind([nRows nCols], i, j)];
+        blocks1 = [blocks1; sub2ind([nRows nCols], i, j)];
      else
-        blocks2 = [blocks2 sub2ind([nRows nCols], i, j)];
+        blocks2 = [blocks2; sub2ind([nRows nCols], i, j)];
      end
   end
 end
