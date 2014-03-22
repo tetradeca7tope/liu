@@ -1,4 +1,4 @@
-function [nodeBel, samples] = UGM_Sample_Infer_Block_Gibbs(nodePot,edgePot,edgeStruct,burnIn,blocks,sampleFunc)
+function [nodeBelHist, samples] = UGM_Sample_Infer_Block_Gibbs(nodePot,edgePot,edgeStruct,burnIn,blocks,sampleFunc, y)
 % Block Gibbs Sampling
 
 [nNodes,maxStates] = size(nodePot);
@@ -11,11 +11,15 @@ maxIter = edgeStruct.maxIter;
 for n = 1:nNodes
     nodeBel(n,1:nStates(n)) = zeros(1, nStates(n));
 end
-size(nodeBel)
+nodeBelHist = zeros([size(nodeBel) maxIter]);
 
-% Initialize
 nBlocks = length(blocks);
+
+if nargin < 7
+% Initialize
 [junk y] = max(nodePot,[],2);
+end
+  
 
 samples = zeros(nNodes,0);
 
@@ -47,6 +51,7 @@ for i = 1:burnIn+maxIter
 
     if i > burnIn
         samples(:,i-burnIn) = y;
+	nodeBelHist(:, :, i-burnIn) = nodeBel / (i - burnIn);
     end
 end
 
