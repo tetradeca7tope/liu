@@ -1,3 +1,7 @@
+% Modification of Kevin Schmidt's UGM package's UGM_Sample_Infer_Tree to
+% support Rao-Blackwellized blocked tree sampling from Hamze & Feritas (see UGM
+% subdirectory for more info about UGM package)
+
 function  [nodeBel, samples] = UGM_Sample_Infer_Tree(nodePot, edgePot, edgeStruct)
 % Note: structure must be a tree
 % (does not currently support forests like other Tree functions)
