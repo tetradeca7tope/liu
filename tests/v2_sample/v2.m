@@ -3,14 +3,14 @@ clear all
 close all
 
 % Specify parameters for the graph
-nRows = 4;
-nCols = 4;
+nRows = 9;
+nCols = 9;
 nNodes = nRows * nCols;
-nStates = 2;
+nStates = 13;
 
 % Define the parameters for the experiment
-nTrials = 100;
-nSamples = 100;
+nTrials = 103;
+nSamples = 204;
 burnIn = 0;
 
 % Generate the Grids and the Blocks
@@ -22,6 +22,7 @@ edgeStruct.maxIter = nSamples;
 
 % Initialize a random starting state
 initialStates = randi(nStates, [nTrials, nNodes]);
+initialState = randi(nStates, [nNodes, 1]);
 gridResults = cell(numGrids, 1);
 
 for gridIter = 1: numGrids
@@ -45,15 +46,16 @@ for gridIter = 1: numGrids
     fprintf('%s', description);
     
     for trialIter = 1:nTrials
-      currInitState = initialStates(trialIter, :)';
+%       currInitState = initialStates(trialIter, :)';
       samples = UGM_Sample_Block_Gibbs(gridNodePotential, gridEdgePotential, ...
-                  edgeStruct, burnIn, blocks, @UGM_Sample_Tree, currInitState);
+                  edgeStruct, burnIn, blocks, @UGM_Sample_Tree, initialState);
       stratRes.allSamples(:,:,trialIter) = samples'; % save the samples
     end
 
-    % Save results and pause
+    % Save results
     gridRes.strategyResults{stratIter} = stratRes;
 
+    fprintf('\n');
   end
 
   % Store the results for this grid

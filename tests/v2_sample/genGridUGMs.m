@@ -27,13 +27,15 @@ edgeStruct = UGM_makeEdgeStruct(adjMat,nStates);
 
 % 1. gridUnif
 % -----------
-nodePotUnif = 0.1*ones(nNodes, nStates);
+nodePotUnif = 3 * ones(nNodes, nStates);
 edgePotUnif = ones(nStates, nStates, edgeStruct.nEdges);
 
 % 2. gridRand
 % -----------
-nodePotRand = 0.1*ones(nNodes, nStates);
-edgePotRand = 2*rand(nStates, nStates, edgeStruct.nEdges);
+nodePotRand = nodePotUnif;
+% Create a strong bias for neighbors to have similar states.
+edgePotRand = 3 * repmat(eye(nStates), [1, 1, edgeStruct.nEdges]) + ...
+              rand(nStates, nStates, edgeStruct.nEdges);
 
 % 3. gridBHor
 % -----------
