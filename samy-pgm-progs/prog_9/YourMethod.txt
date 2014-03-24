@@ -1,8 +1,0 @@
-Describe your method used to recognize the unknown actions here.
-
-
-Submission 2 (31/5/2012 7:30)
-Used datasetTrain1 for training.
-
-Submission 1 (31/5/2012: 7.00)
-Just submitted existing code with giving initialization.

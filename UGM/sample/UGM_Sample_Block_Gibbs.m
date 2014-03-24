@@ -1,4 +1,5 @@
-function [samples] = UGM_Sample_Block_Gibbs(nodePot,edgePot,edgeStruct,burnIn,blocks,sampleFunc)
+function [samples] = UGM_Sample_Block_Gibbs(nodePot,edgePot,edgeStruct, ...
+  burnIn, blocks, sampleFunc, initState)
 % Block Gibbs Sampling
 
 [nNodes,maxStates] = size(nodePot);
@@ -11,17 +12,21 @@ maxIter = edgeStruct.maxIter;
 
 % Initialize
 nBlocks = length(blocks);
-[junk y] = max(nodePot,[],2);
+if ~exist('initState', 'var')
+  [~, y] = max(nodePot,[],2);
+else
+  y = initState;
+end
 
 samples = zeros(nNodes,0);
 
 for i = 1:burnIn+maxIter
     
-    if i <= burnIn
-        fprintf('Generating burnIn sample %d of %d\n',i,burnIn);
-    else
-        fprintf('Generating sample %d of %d\n',i-burnIn,maxIter);
-    end
+%     if i <= burnIn
+%         fprintf('Generating burnIn sample %d of %d\n',i,burnIn);
+%     else
+%         fprintf('Generating sample %d of %d\n',i-burnIn,maxIter);
+%     end
 
     for b = 1:nBlocks
         clamped = y;
