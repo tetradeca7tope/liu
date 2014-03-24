@@ -30,6 +30,8 @@ for gridIter = 1: numGrids
   % Prepare struct for saving results for this grid
   gridRes.gridName = gridNames{gridIter};
   gridRes.strategyResults = cell(numStrategies, 1);
+  gridRes.runTimeMeans = zeros(numStrategies, 1);
+  gridRes.runTimeStds = zeros(numStrategies, 1);
 
   for stratIter = 1: numStrategies
 
@@ -41,20 +43,28 @@ for gridIter = 1: numGrids
     blocks = strategyBlocks{stratIter};
     gridEdgePotential = gridEdgePots{gridIter};
     gridNodePotential = gridNodePots{gridIter};
+    currStratRunTimes = zeros(nTrials, 1);
     description = sprintf('Grid: %s\nStrategy:%s\n', gridNames{gridIter}, ...
                           strategyNames{stratIter});
     fprintf('%s', description);
     
     for trialIter = 1:nTrials
 %       currInitState = initialStates(trialIter, :)';
+      tic,
       samples = UGM_Sample_Block_Gibbs(gridNodePotential, gridEdgePotential, ...
                   edgeStruct, burnIn, blocks, @UGM_Sample_Tree, initialState);
+      currStratRunTimes(trialIter) = toc;
       stratRes.allSamples(:,:,trialIter) = samples'; % save the samples
     end
 
     % Save results
     gridRes.strategyResults{stratIter} = stratRes;
+    gridRes.runTimeMeans(stratIter) = mean(currStratRunTimes);
+    gridRes.runTimeStds(stratIter) = std(currStratRunTimes);
 
+    fprintf('Running Time: %0.4f +/- %0.4f  x  %d\n', ...
+      gridRes.runTimeMeans(stratIter), gridRes.runTimeStds(stratIter), ...
+      nTrials);
     fprintf('\n');
   end
 
