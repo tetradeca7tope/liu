@@ -2,7 +2,7 @@
 % Checker Board and HF.
 
 % Parameters
-plotOk = true;
+plotOk = false; %true;
 
 % 1. Naive
 % ========

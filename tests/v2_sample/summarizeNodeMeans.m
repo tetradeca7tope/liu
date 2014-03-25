@@ -16,7 +16,7 @@ function gridResults = summarizeNodeMeans(gridResults, nNodes, nSamples, ...
 
   for gridIter = 1:numGrids
     gridRes = gridResults{gridIter};
-    if isempty(gridRes) break; end
+    if isempty(gridRes) continue; end
 
     % Iterate through each strategy
     currNumStrategies = numel(gridRes.strategyResults);
@@ -27,7 +27,7 @@ function gridResults = summarizeNodeMeans(gridResults, nNodes, nSamples, ...
 
     for stratIter = 1:currNumStrategies
       stratRes = gridRes.strategyResults{stratIter};
-      if isempty(stratRes) break; end
+      if isempty(stratRes) continue; end
       % extract the mean and std over each trial.
       strategyMeans(stratIter, :) = ...
         mean(stratRes.allSamples(meansAtIter, :, :), 3);
@@ -82,6 +82,16 @@ function gridResults = summarizeNodeMeans(gridResults, nNodes, nSamples, ...
       figure; hold on,
       for stratIter = 1:currNumStrategies
         errorbar(nodeMeans(stratIter, :), nodeStdErrs(stratIter, :), ...
+          plotDesc{stratIter}, 'Color',plotCols{stratIter});
+      end
+      legend(strategyNames);
+      titleStr = sprintf('Sample # vs Mean @ Node %d: %s', ...
+                  progressAtNode, gridRes.gridName);
+      title(titleStr);
+      % plot w/o error bars too
+      figure; hold on,
+      for stratIter = 1:currNumStrategies
+        plot(nodeMeans(stratIter, :), ...
           plotDesc{stratIter}, 'Color',plotCols{stratIter});
       end
       legend(strategyNames);

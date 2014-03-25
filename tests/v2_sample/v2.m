@@ -3,14 +3,14 @@ clear all
 close all
 
 % Specify parameters for the graph
-nRows = 9;
-nCols = 9;
+nRows = 30;
+nCols = 30;
 nNodes = nRows * nCols;
-nStates = 13;
+nStates = 25;
 
 % Define the parameters for the experiment
-nTrials = 103;
-nSamples = 204;
+nTrials = 500;
+nSamples = 30;
 burnIn = 0;
 
 % Generate the Grids and the Blocks
@@ -21,8 +21,8 @@ numStrategies = numel(strategyBlocks);
 edgeStruct.maxIter = nSamples;
 
 % Initialize a random starting state
-initialStates = randi(nStates, [nTrials, nNodes]);
-initialState = randi(nStates, [nNodes, 1]);
+% initialStates = randi(nStates, [nTrials, nNodes]);
+initialState = ones(nNodes, 1); % use same init for all trials.
 gridResults = cell(numGrids, 1);
 
 for gridIter = 1: numGrids
@@ -51,8 +51,14 @@ for gridIter = 1: numGrids
     for trialIter = 1:nTrials
 %       currInitState = initialStates(trialIter, :)';
       tic,
-      samples = UGM_Sample_Block_Gibbs(gridNodePotential, gridEdgePotential, ...
-                  edgeStruct, burnIn, blocks, @UGM_Sample_Tree, initialState);
+      if strcmp(stratRes.strategyName,'Naive')
+        samples = UGM_Sample_Gibbs(gridNodePotential, gridEdgePotential, ...
+          edgeStruct, burnIn);
+      else
+        samples = UGM_Sample_Block_Gibbs(gridNodePotential, ...
+          gridEdgePotential, edgeStruct, burnIn, blocks, @UGM_Sample_Tree, ...
+          initialState);
+      end
       currStratRunTimes(trialIter) = toc;
       stratRes.allSamples(:,:,trialIter) = samples'; % save the samples
     end
@@ -62,7 +68,7 @@ for gridIter = 1: numGrids
     gridRes.runTimeMeans(stratIter) = mean(currStratRunTimes);
     gridRes.runTimeStds(stratIter) = std(currStratRunTimes);
 
-    fprintf('Running Time: %0.4f +/- %0.4f  x  %d\n', ...
+    fprintf('Running Time: %0.4f +/- %0.4f  x  %d secs\n', ...
       gridRes.runTimeMeans(stratIter), gridRes.runTimeStds(stratIter), ...
       nTrials);
     fprintf('\n');
