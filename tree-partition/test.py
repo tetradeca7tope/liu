@@ -35,10 +35,11 @@ def main():
         else:
              print "ERROR!"
 
-    print partition
+    #print partition
     for tree in partition:
         tree.sort() 
-    print partition
+        print tree
+    #print partition
 
 if __name__ == "__main__":
     main()

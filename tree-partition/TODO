@@ -7,3 +7,6 @@
     [Done] Sort by weight
     [] Sort by something in the paper
     [] Prevent same vertices to be added multiple times to the queue
+
+- Main
+    [Done] Sort each output tree by node id.
