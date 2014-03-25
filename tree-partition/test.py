@@ -36,6 +36,9 @@ def main():
              print "ERROR!"
 
     print partition
+    for tree in partition:
+        tree.sort() 
+    print partition
 
 if __name__ == "__main__":
     main()

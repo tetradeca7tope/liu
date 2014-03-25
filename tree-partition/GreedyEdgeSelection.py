@@ -75,6 +75,9 @@ def GreedyEdgeSelection(V, E):
             T[Vj] = []         
             print "Added", e
 
-    #TODO
+    #Add disconnected nodes
+    for i in range(1, V+1):
+        if colors[i] == -1:
+            T.append([i])
 
     return T

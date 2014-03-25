@@ -29,8 +29,8 @@ def getNeighbors(V, E):
         #print "N", N
         #print "W", W
 
-    print "N[2]", N[2]
-    print "W[2]", W[2]
+    #print "N[2]", N[2]
+    #print "W[2]", W[2]
     return N, W
 
 def GreedyTreeGrowing(V, E):
@@ -70,5 +70,5 @@ def GreedyTreeGrowing(V, E):
                         Q.put((-w, k)) #Minus sign: make the largest weight comes out first 
                
         T.append(Ti)
-        print T
+        #print T
     return T
