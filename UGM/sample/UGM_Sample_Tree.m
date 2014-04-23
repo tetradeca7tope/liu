@@ -82,7 +82,6 @@ end
 
 % Now sample along the ordering
 samples = zeros(nNodes,maxIter);
-maxIter
 for s = 1:maxIter
     y = zeros(nNodes,1);
     for o = 1:length(order)

@@ -1,4 +1,0 @@
-SamIam launch command "/usr/bin/java -Xruncalljvmti -Xms8m -Xmx512m -classpath /home/kirthevasan/KKY/research/online_classes/pgm/prog_assignments/prog_1/PGM_Programming_Assignment_1/samiam/samiam.jar:/home/kirthevasan/KKY/research/online_classes/pgm/prog_assignments/prog_1/PGM_Programming_Assignment_1/samiam/inflib.jar edu.ucla.belief.ui.UI "
-SamIam launched by "/home/kirthevasan/KKY/research/online_classes/pgm/prog_assignments/prog_1/PGM_Programming_Assignment_1/samiam/runsamiam"
-Exception in Metacity for theme "Clearlooks": Variable "Bmin`max`height" not defined
-Exception in thread "AWT-EventQueue-0" java.lang.NullPointerException
