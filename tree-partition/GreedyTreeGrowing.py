@@ -32,7 +32,7 @@ def getNeighbors(V, E):
     #print "Done generating neighbors"
     return N, W
 
-def GreedyTreeGrowing(V, E):
+def GreedyTreeGrowing(V, E, maxVperTree = -1):
     N, W = getNeighbors(V, E) # N[v] is a list of all v's neighbors TODO
 
     V = range(1, V+1) # 1, 2, ... V
@@ -46,7 +46,7 @@ def GreedyTreeGrowing(V, E):
         maxQueueSize = V
         Q = Queue.PriorityQueue(maxQueueSize)
         Q.put((0, v)) #The priority here doen't matter
-        while Q.qsize() > 0: #TODO !!!! TODO Can we use qsize() here?? Said to be unreliable? 
+        while Q.qsize() > 0: #? Can we use qsize() here? Said to be unreliable? 
             u = Q.get()[1]
             #print "Trying vertex #", u
             
@@ -58,13 +58,17 @@ def GreedyTreeGrowing(V, E):
                 #Remove u from V
                 V.remove(u)
                 #Do we need to remove u form E and N???
+
+                if (maxVperTree > 0) and (len(Ti) >= maxVperTree):
+                    break; #End of this tree
                 
                 #Prepare for next round
                 for i in range(len(N[u])):
                     k = N[u][i]
                     if k in V:
                         w = W[u][i] #Weight(u, k)
-                        Q.put((-w, k)) #Minus sign: make the largest weight comes out first 
+                        Q.put((-w, k)) 
+                        #Minus sign: make the largest weight comes out first 
             #print "Q.qsize()", Q.qsize()    
         T.append(Ti)
         #print T

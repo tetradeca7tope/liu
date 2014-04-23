@@ -1,14 +1,18 @@
 - Greedy Edge Selection
     [Done] Basic logic
     [Done] Sort by weight
-    [] Fancier getOtherNeighborColors(). Now it's way slower than Greedy Tree Growing
+	[] Fancier getOtherNeighborColors(). Now it's way slower than Greedy Tree
+	   Growing
+	[] Put a cap on # of nodes in each tree
 
 - Greedy Tree Growing 
     [Done] Sort by weight
     [] Sort by something in the paper
     [] Prevent same vertices to be added multiple times to the queue
-    [Done] Debug grid_15.in (14.in runs super fast but 15.in got stuck forever.) 
+    [Done] Debug grid_15.in 
+           14.in runs super fast but 15.in got stuck forever. 
            (Queue size too small. fixed)
+	[Working] Put a cap on # of nodes in each tree
 
 - Main
     [Done] Sort each output tree by node id.
