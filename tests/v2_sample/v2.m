@@ -2,14 +2,17 @@
 clear all
 close all
 
+% Add relevant libraries
+addpath(genpath('../../UGM'));
+
 % Specify parameters for the graph
-nRows = 30;
-nCols = 30;
+nRows = 15;
+nCols = 15;
 nNodes = nRows * nCols;
-nStates = 25;
+nStates = 2;
 
 % Define the parameters for the experiment
-nTrials = 500;
+nTrials = 99;
 nSamples = 30;
 burnIn = 0;
 
@@ -25,7 +28,7 @@ edgeStruct.maxIter = nSamples;
 initialState = ones(nNodes, 1); % use same init for all trials.
 gridResults = cell(numGrids, 1);
 
-for gridIter = 1: numGrids
+for gridIter = 2: numGrids
 
   % Prepare struct for saving results for this grid
   gridRes.gridName = gridNames{gridIter};
@@ -53,7 +56,7 @@ for gridIter = 1: numGrids
       tic,
       if strcmp(stratRes.strategyName,'Naive')
         samples = UGM_Sample_Gibbs(gridNodePotential, gridEdgePotential, ...
-          edgeStruct, burnIn);
+          edgeStruct, burnIn, initialState);
       else
         samples = UGM_Sample_Block_Gibbs(gridNodePotential, ...
           gridEdgePotential, edgeStruct, burnIn, blocks, @UGM_Sample_Tree, ...

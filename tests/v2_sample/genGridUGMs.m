@@ -27,15 +27,16 @@ edgeStruct = UGM_makeEdgeStruct(adjMat,nStates);
 
 % 1. gridUnif
 % -----------
-nodePotUnif = 1 * ones(nNodes, nStates);
+nodePotUnif = 0.1 * ones(nNodes, nStates);
 edgePotUnif = ones(nStates, nStates, edgeStruct.nEdges);
 
 % 2. gridRand
 % -----------
 nodePotRand = nodePotUnif;
 % Create a strong bias for neighbors to have similar states.
-edgePotRand = 1 * repmat(eye(nStates), [1, 1, edgeStruct.nEdges]) + ...
-              rand(nStates, nStates, edgeStruct.nEdges);
+% edgePotRand = 1 * repmat(eye(nStates), [1, 1, edgeStruct.nEdges]) + ...
+%               3*randn(nStates, nStates, edgeStruct.nEdges) ;
+edgePotRand = 3*randn(nStates, nStates, edgeStruct.nEdges) ;
 
 % 3. gridBHor
 % -----------
@@ -46,3 +47,8 @@ gridNames = {'Uniform', 'Random'};
 gridEdgePots = {edgePotUnif, edgePotRand};
 gridNodePots = {nodePotUnif, nodePotRand};
 
+% Graphs that seem to work so far.
+% nodePotUnif = 0.1 * ones(nNodes, nStates);
+% edgePotRand = 3 * repmat(eye(nStates), [1, 1, edgeStruct.nEdges]) + ...
+%               0.5*rand(nStates, nStates, edgeStruct.nEdges) + 0.5;
+% nStates = 13, nRows = nCols = 9;
