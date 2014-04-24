@@ -27,3 +27,10 @@ edgePot(:, :, 5) = s*[1 3; 3 1];
 corrGraph = estimateCorrelations(nodePot, edgePot, edgeStruct, 10, 10000);
 corrGraph,
 
+% Partition into Trees
+% Greedy Tree Growing
+partition_1 = treePartition('GreedyTree', corrGraph)
+color_1 = treePartition('GreedyTree', corrGraph, true)
+% Greedy Edge Selection
+partition_2 = treePartition('GreedyEdge', corrGraph)
+color_2 = treePartition('GreedyEdge', corrGraph, true)
