@@ -2,7 +2,6 @@
 
 import Queue
 
-maxQueueSize = 100
 
 def getNeighbors(V, E):
 
@@ -12,7 +11,6 @@ def getNeighbors(V, E):
     for i in range(V+1):
         N.append([])
         W.append([])
-    print N
 
     #Bug Fix
     #The following don't work
@@ -29,11 +27,12 @@ def getNeighbors(V, E):
         #print "N", N
         #print "W", W
 
-    print "N[2]", N[2]
-    print "W[2]", W[2]
+    #print "N[2]", N[2]
+    #print "W[2]", W[2]
+    #print "Done generating neighbors"
     return N, W
 
-def GreedyTreeGrowing(V, E):
+def GreedyTreeGrowing(V, E, maxVperTree = -1):
     N, W = getNeighbors(V, E) # N[v] is a list of all v's neighbors TODO
 
     V = range(1, V+1) # 1, 2, ... V
@@ -41,34 +40,36 @@ def GreedyTreeGrowing(V, E):
     i = 0
     T = []
     while len(V) > 0:
-        print "New Tree"
+        #print "New Tree"
         v = V[0]
         Ti = []
+        maxQueueSize = V
         Q = Queue.PriorityQueue(maxQueueSize)
         Q.put((0, v)) #The priority here doen't matter
-        while Q.qsize() > 0: #TODO !!!! TODO Can we use qsize() here?? Said to be unreliable? 
+        while Q.qsize() > 0: #? Can we use qsize() here? Said to be unreliable? 
             u = Q.get()[1]
-            print "Trying vertex #", u
+            #print "Trying vertex #", u
             
             neighborsInT = set(N[u]) & set(Ti)
-            print "neighborsInT", neighborsInT
-            #for v in Ti:
-            #    if v in N[u]:
-            #        neighborsInT += 1
+            #print "neighborsInT", neighborsInT
             if len(neighborsInT) <= 1:
                 #Add u to the tree Ti
                 Ti.append(u)
                 #Remove u from V
                 V.remove(u)
                 #Do we need to remove u form E and N???
+
+                if (maxVperTree > 0) and (len(Ti) >= maxVperTree):
+                    break; #End of this tree
                 
                 #Prepare for next round
                 for i in range(len(N[u])):
                     k = N[u][i]
                     if k in V:
                         w = W[u][i] #Weight(u, k)
-                        Q.put((-w, k)) #Minus sign: make the largest weight comes out first 
-               
+                        Q.put((-w, k)) 
+                        #Minus sign: make the largest weight comes out first 
+            #print "Q.qsize()", Q.qsize()    
         T.append(Ti)
-        print T
+        #print T
     return T
