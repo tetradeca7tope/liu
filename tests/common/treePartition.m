@@ -36,7 +36,7 @@ function partition = treePartition(...
     fprintf(fid, '%d\n', length(corrGraph)); % number of nodes
     fprintf(fid, '%d %d %f\n', [i, j, weight]'); % edges
     fclose(fid);
-    pyscript = '..\..\tree-partition\RunTreePartitioning.py';
+    pyscript = '../../tree-partition/RunTreePartitioning.py';
     
     if outputcolor
         outputOption = ' --outputcolor';
