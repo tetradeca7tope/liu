@@ -27,7 +27,7 @@ function corrGraph = estimateCorrelations(nodePot, ...
   estimStds = estimStds + double((estimStds == 0));
 
   % Now for each edge in the graph, compute the correlations
-  corrGraph = sparse(edgeStruct.nEdges, edgeStruct.nEdges);
+  corrGraph = sparse(double(edgeStruct.nNodes), double(edgeStruct.nNodes));
   for edgeIter = 1:edgeStruct.nEdges
     n1 = edgeStruct.edgeEnds(edgeIter, 1);
     n2 = edgeStruct.edgeEnds(edgeIter, 2);

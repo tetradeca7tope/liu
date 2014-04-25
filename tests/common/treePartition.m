@@ -47,5 +47,7 @@ function partition = treePartition(...
     [status, cmdout] = dos(['python ', pyscript, ' ', ...
        algo, ' ', graph_fn, outputOption]);
 
+    cmdout
+    size(cmdout)
     partition = str2num(cmdout);
 end

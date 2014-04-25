@@ -1,10 +1,10 @@
 %% Generate a "patch image"
 
-nRows = 50;
-nCols = 50;
+nRows = 20;
+nCols = 20;
 nStates = 15;
 nNodes = nRows * nCols;
-patchWidth = 5;
+patchWidth = 2;
 patchHeight = patchWidth;
 
 % How many pixels to flip
@@ -23,7 +23,7 @@ for i = 1:(nRows/patchHeight)
     image = [image ; rowOfPatches];
 end
 
-figure(1);
+%%figure(1);
 imagesc(image);
 colormap gray
 
@@ -39,7 +39,7 @@ for i = 1:noiseLevel
     noisyImage(ind2sub(size(image), perm(i))) = mod(old + offset, nStates) + 1;
 end
 
-figure(2);
+%%figure(2);
 imagesc(noisyImage);
 colormap gray
 
@@ -92,10 +92,10 @@ stepSize = iterRange/maxSteps;
 initial = randi(nStates, [nNodes 1]);
 
 % Naive Gibbs
-figure(3);
+%%figure(3);
 
 edgeStruct.maxIter = iterRange;
-edgeStruct.useMex = 1;
+edgeStruct.useMex = 0;
 tic;
 samplesNaiveGibbs = UGM_Sample_Gibbs(nodePot,edgePot,edgeStruct,burnIn, initial);
 toc
@@ -135,7 +135,7 @@ b1Ind = nNodes/2;
 blocks = {blocks1;blocks2};
 
 %%% Visualize the blocks
-%figure(4);
+%%%figure(4);
 %visual = zeros(nNodes, 1);
 %for j = 1:b1Ind
 %    visual(blocks2(j)) = 1;
@@ -143,7 +143,7 @@ blocks = {blocks1;blocks2};
 %imagesc(reshape(visual, nRows, nCols));
 %colormap gray
 
-figure(5);
+%%figure(5);
 edgeStruct.maxIter = iterRange;
 tic;
 [nodeBelHist junk] = UGM_Sample_Infer_Block_Gibbs(nodePot,edgePot,edgeStruct,burnIn,blocks,...
@@ -159,6 +159,45 @@ for i = 1:maxSteps
     imagesc(recon);
     colormap gray
 end
+
+%%% Our algorithm 
+
+display('Computing correlations.')
+%corrGraph = estimateCorrelations(nodePot, edgePot, edgeStruct, 10, 10000);
+corrGraph = estimateCorrelations(nodePot, edgePot, edgeStruct, 10, 1000);
+display('Partitioning.')
+partition = treePartition('GreedyTree', corrGraph);
+
+% We need to convert the partition into a cell array and remove the trailing zeros
+% that wenlu had to add.
+[nBlocks, junk] = size(partition);
+blocks = {};
+for i = 1:nBlocks
+	row = partition(i, :);
+	last = find(row, 1, 'last');
+	blocks{i} = row(1:last)';
+end
+
+blocks = blocks'
+
+%%figure(6);
+edgeStruct.maxIter = iterRange;
+tic;
+[nodeBelHist junk] = UGM_Sample_Infer_Block_Gibbs(nodePot,edgePot,edgeStruct,burnIn,blocks,...
+                                                  @UGM_Sample_Infer_Tree, initial);
+toc
+
+for i = 1:maxSteps
+    upto = i*stepSize;
+    [junk nodeLabels] = max(nodeBelHist(:, :, upto), [], 2);
+    recon = reshape(nodeLabels, nRows, nCols);
+    errorRatesBlockOT(i) = (sum(sum(abs(1 - (recon == image))))) / nNodes;
+    subplot(2,5,i);
+    recon(1:5, 1:5)
+    imagesc(recon);
+    colormap gray
+end
+
 
 %%%% HF Block Gibbs sampling
 
@@ -186,7 +225,7 @@ end
 blocks = {blocks1;blocks2};
 
 %% Visualize the blocks
-%figure(6)
+%%%figure(6)
 %visual = zeros(nNodes, 1);
 %for j = 1:b1Ind
 %    visual(blocks2(j)) = 1;
@@ -194,7 +233,7 @@ blocks = {blocks1;blocks2};
 %imagesc(reshape(visual, nRows, nCols));
 %colormap gray
 
-figure(7);
+%%figure(7);
 edgeStruct.maxIter = iterRange;
 tic;
 [nodeBelHist junk] = UGM_Sample_Infer_Block_Gibbs(nodePot,edgePot,edgeStruct,burnIn,blocks,...
@@ -211,13 +250,18 @@ for i = 1:maxSteps
     colormap gray
 end
 
+
 errorRatesNaive
 errorRatesBlockCB
+errorRatesBlockOT
 errorRatesBlockHF
 
-figure(8);
+%%figure(8);
+title('Error rate vs. Samples');
+ylabel('Error rate');
+xlabel('Number of samples');
 plot(errorRatesNaive, 'b-o'); hold on,
 plot(errorRatesBlockCB, 'r-x');
 plot(errorRatesBlockHF, 'g-x');
-legend('Naive', 'HF', 'CB');
+legend('Naive', 'Checker Board', 'Hamze-Freitas');
 
