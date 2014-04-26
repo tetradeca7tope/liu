@@ -23,16 +23,17 @@ def main():
     parser = argparse.ArgumentParser(description="Tree Partition")
     parser.add_argument('algo', metavar='algo', type=str, help='GreedyTree/GreedyEdge')
     parser.add_argument('graphFileName', metavar='graphFile', type=str, help='Graph File Name')
+    parser.add_argument('maxTreeSize', metavar='maxTreeSize', type=int, help='The max size of trees. Set to -1 if you do not want to control this.')
     parser.add_argument('--outputcolor', dest='outColor', action='store_true')
     args = parser.parse_args()
     V, E = loadGraphFrom(args.graphFileName)
 
     #print args.algo
     if args.algo == "GreedyTree":
-        partition = GreedyTreeGrowing(V, E)
+        partition = GreedyTreeGrowing(V, E, args.maxTreeSize)
     else:
         if args.algo == "GreedyEdge":
-            partition = GreedyEdgeSelection(V, E)
+            partition = GreedyEdgeSelection(V, E, args.maxTreeSize)
         else:
             print "ERROR! Unknown algorithm"
             return

@@ -29,8 +29,8 @@ corrGraph,
 
 % Partition into Trees
 % Greedy Tree Growing
-partition_1 = treePartition('GreedyTree', corrGraph)
-color_1 = treePartition('GreedyTree', corrGraph, true)
+partition_1 = treePartition('GreedyTree', corrGraph, 2)
+color_1 = treePartition('GreedyTree', corrGraph, 2, true)
 % Greedy Edge Selection
-partition_2 = treePartition('GreedyEdge', corrGraph)
-color_2 = treePartition('GreedyEdge', corrGraph, true)
+partition_2 = treePartition('GreedyEdge', corrGraph, 2)
+color_2 = treePartition('GreedyEdge', corrGraph, 2, true)

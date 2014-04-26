@@ -7,6 +7,9 @@
 % corrGraph:
 %   A sparse matrix representing the weighted graph
 %
+% maxTreeSize:
+%   Control the max tree size. Set to -1 if you don't want to control it.
+%
 % outputcolor:
 %   specifying the output format
 %   false
@@ -24,9 +27,10 @@
 function partition = treePartition(...
     algo, ...
     corrGraph, ...
+    maxTreeSize, ...
     outputcolor)
-   
-    if nargin < 3
+
+    if nargin < 4
         outputcolor = false;
     end
     
@@ -44,8 +48,13 @@ function partition = treePartition(...
         outputOption = '';
     end
 
-    [status, cmdout] = dos(['python ', pyscript, ' ', ...
-       algo, ' ', graph_fn, outputOption]);
+    
+    
+    cmd = ['python ', pyscript, ' ', ...
+       algo, ' ', graph_fn, ' ', ...
+       num2str(maxTreeSize), ' ', outputOption]
+    
+    [status, cmdout] = dos(cmd);
 
     cmdout
     size(cmdout)
