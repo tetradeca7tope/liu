@@ -1,7 +1,7 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.12.20)  29 APR 2014 14:20
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.10.9)  29 APR 2014 18:37
 entering extended mode
  %&-line parsing enabled.
-**poster.tex
+**poster.tex poster
 (./poster.tex
 LaTeX2e <2009/09/24>
 Babel <v3.8l> and hyphenation patterns for english, usenglishmax, dumylang, noh
@@ -749,6 +749,13 @@ Package: eulervm 2005/01/11 v4.0 (WaS)
 )
 (/usr/share/texmf-texlive/tex/latex/tools/xspace.sty
 Package: xspace 2006/05/08 v1.12 Space after command names (DPC,MH)
+)
+(/usr/share/texmf-texlive/tex/latex/ltxmisc/framed.sty
+Package: framed 2007/10/04 v 0.95: framed or shaded text with page breaks
+\fb@frw=\dimen178
+\fb@frh=\dimen179
+\FrameRule=\dimen180
+\FrameSep=\dimen181
 ) (./kky.sty
 (/usr/share/texmf-texlive/tex/latex/mh/mathtools.sty
 Package: mathtools 2008/08/01 v1.06 mathematical typesetting tools (MH)
@@ -757,8 +764,8 @@ Package: mathtools 2008/08/01 v1.06 mathematical typesetting tools (MH)
 Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
 \calc@Acount=\count150
 \calc@Bcount=\count151
-\calc@Adimen=\dimen178
-\calc@Bdimen=\dimen179
+\calc@Adimen=\dimen182
+\calc@Bdimen=\dimen183
 \calc@Askip=\skip57
 \calc@Bskip=\skip58
 LaTeX Info: Redefining \setlength on input line 76.
@@ -770,7 +777,7 @@ LaTeX Info: Redefining \addtolength on input line 77.
 Package: mhsetup 2007/12/03 v1.2 programming setup (MH)
 )
 \g_MT_multlinerow_int=\count153
-\l_MT_multwidth_dim=\dimen180
+\l_MT_multwidth_dim=\dimen184
 )
 (/usr/share/texmf-texlive/tex/latex/tools/bm.sty
 Package: bm 2004/02/26 v1.1c Bold Symbol Support (DPC/FMi)
@@ -1374,13 +1381,13 @@ driver: pdftex
 (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
 \scratchcounter=\count167
-\scratchdimen=\dimen181
+\scratchdimen=\dimen185
 \scratchbox=\box53
 \nofMPsegments=\count168
 \nofMParguments=\count169
 \everyMPshowfont=\toks43
 \MPscratchCnt=\count170
-\MPscratchDim=\dimen182
+\MPscratchDim=\dimen186
 \MPnumerator=\count171
 \everyMPtoPDFconversion=\toks44
 ) ABD: EveryShipout initializing macros
@@ -1474,69 +1481,113 @@ Overfull \hbox (42.99345pt too wide) detected at line 19
 ][] [][][][][][][] 
  []
 
-LaTeX Font Info:    Calculating math sizes for size <14.93> on input line 97.
-LaTeX Font Info:    Try loading font information for U+zeur on input line 97.
+LaTeX Font Info:    Calculating math sizes for size <14.93> on input line 205.
+LaTeX Font Info:    Try loading font information for U+zeur on input line 205.
 (/usr/share/texmf-texlive/tex/latex/eulervm/uzeur.fd
 File: uzeur.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Try loading font information for U+zeus on input line 97.
+LaTeX Font Info:    Try loading font information for U+zeus on input line 205.
 
 (/usr/share/texmf-texlive/tex/latex/eulervm/uzeus.fd
 File: uzeus.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Try loading font information for U+zeuex on input line 97.
+LaTeX Font Info:    Try loading font information for U+zeuex on input line 205.
+
 
 (/usr/share/texmf-texlive/tex/latex/eulervm/uzeuex.fd
 File: uzeuex.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Try loading font information for U+pxsya on input line 97.
+LaTeX Font Info:    Try loading font information for U+pxsya on input line 205.
+
 
 (/usr/share/texmf-texlive/tex/latex/pxfonts/upxsya.fd
 File: upxsya.fd 2000/12/14 v1.0
 )
-LaTeX Font Info:    Try loading font information for U+pxsyb on input line 97.
+LaTeX Font Info:    Try loading font information for U+pxsyb on input line 205.
+
 
 (/usr/share/texmf-texlive/tex/latex/pxfonts/upxsyb.fd
 File: utxsyb.fd 2000/12/14 v1.0
 )
-LaTeX Font Info:    Try loading font information for U+pxmia on input line 97.
+LaTeX Font Info:    Try loading font information for U+pxmia on input line 205.
+
 
 (/usr/share/texmf-texlive/tex/latex/pxfonts/upxmia.fd
 File: upxmia.fd 2000/12/14 v1.0
 )
-LaTeX Font Info:    Try loading font information for U+pxsyc on input line 97.
+LaTeX Font Info:    Try loading font information for U+pxsyc on input line 205.
+
 
 (/usr/share/texmf-texlive/tex/latex/pxfonts/upxsyc.fd
 File: upxsyc.fd 2000/12/14 v1.0
 )
 LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <14.93> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 97.
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 205.
 LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <10.45094> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 97.
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 205.
 LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <7.465> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 97.
-LaTeX Font Info:    Try loading font information for OT1+pxtt on input line 97.
-
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 205.
+LaTeX Font Info:    Try loading font information for OT1+pxtt on input line 205
+.
 
 (/usr/share/texmf-texlive/tex/latex/pxfonts/ot1pxtt.fd
 File: ot1pxtt.fd 2000/12/14 v1.0
 )
-LaTeX Font Info:    Try loading font information for OMS+pxtt on input line 97.
-
-LaTeX Font Info:    No file OMSpxtt.fd. on input line 97.
+LaTeX Font Info:    Try loading font information for OMS+pxtt on input line 205
+.
+LaTeX Font Info:    No file OMSpxtt.fd. on input line 205.
 
 
 LaTeX Font Warning: Font shape `OMS/pxtt/m/n' undefined
 (Font)              using `OMS/pxsy/m/n' instead
-(Font)              for symbol `textbraceleft' on input line 97.
+(Font)              for symbol `textbraceleft' on input line 205.
 
-LaTeX Font Info:    Calculating math sizes for size <8.64> on input line 97.
+LaTeX Font Info:    Calculating math sizes for size <7.2> on input line 205.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <7.2> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 205.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <5.03996> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 205.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <3.59999> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 205.
+LaTeX Font Info:    Calculating math sizes for size <12.44> on input line 205.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <12.44> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 205.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <8.70796> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 205.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <6.22> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 205.
+LaTeX Font Info:    Calculating math sizes for size <10.37> on input line 205.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <10.37> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 205.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <7.25896> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 205.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <5.185> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 205.
+
+! LaTeX Error: Too deeply nested.
+
+See the LaTeX manual or LaTeX Companion for explanation.
+Type  H <return>  for immediate help.
+ ...                                              
+                                                  
+l.205 \end{frame}
+                 
+? 
+<TotalTrees-Vs-MaxTreeSize.png, id=13, 602.25pt x 372.39125pt>
+File: TotalTrees-Vs-MaxTreeSize.png Graphic file (type png)
+
+<use TotalTrees-Vs-MaxTreeSize.png>
+<MedianTreeSize-Vs-MaxTreeSize.png, id=15, 706.64pt x 460.72125pt>
+File: MedianTreeSize-Vs-MaxTreeSize.png Graphic file (type png)
+
+<use MedianTreeSize-Vs-MaxTreeSize.png>
+LaTeX Font Info:    Calculating math sizes for size <8.64> on input line 205.
 LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <8.64> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 97.
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 205.
 LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <6.04796> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 97.
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 205.
 LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <4.31999> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 97.
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 205.
 
 Overfull \hbox (42.99345pt too wide) has occurred while \output is active
 [][][] [][][][][][][][][] [][][][][][][][][] [][][][][][][][][] [][][][][][][][
@@ -1545,7 +1596,7 @@ Overfull \hbox (42.99345pt too wide) has occurred while \output is active
 
 [1{/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-]
+ <./TotalTrees-Vs-MaxTreeSize.png> <./MedianTreeSize-Vs-MaxTreeSize.png>]
 \tf@nav=\write6
 \openout6 = `poster.nav'.
 
@@ -1561,26 +1612,31 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 16821 strings out of 493848
- 300916 string characters out of 1152822
- 442380 words of memory out of 3000000
- 19572 multiletter control sequences out of 15000+50000
- 44015 words of font info for 135 fonts, out of 3000000 for 9000
+ 17093 strings out of 493848
+ 306265 string characters out of 1152823
+ 498910 words of memory out of 3000000
+ 19810 multiletter control sequences out of 15000+50000
+ 91840 words of font info for 287 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 49i,17n,66p,434b,1018s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 49i,17n,66p,441b,1532s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/euler/euex10.pfb></usr/share/texmf-texlive/fonts
-/type1/public/amsfonts/euler/eufm10.pfb></usr/share/texmf-texlive/fonts/type1/p
-ublic/amsfonts/euler/eurm10.pfb></usr/share/texmf-texlive/fonts/type1/public/am
-sfonts/euler/eusm10.pfb></usr/share/texmf-texlive/fonts/type1/public/pxfonts/px
-sy.pfb></usr/share/texmf-texlive/fonts/type1/public/pxfonts/pxsya.pfb></usr/sha
-re/texmf-texlive/fonts/type1/public/pxfonts/rpxbsc.pfb></usr/share/texmf-texliv
-e/fonts/type1/public/txfonts/txtt.pfb></usr/share/texmf-texlive/fonts/type1/urw
-/palatino/uplb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplr8a.
-pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplri8a.pfb>
-Output written on poster.pdf (1 page, 89250 bytes).
+ve/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/euler/euex10.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/euler/eufm10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfo
+nts/euler/eufm7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/euler
+/eurm10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/euler/eusm10.
+pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam10.pfb></
+usr/share/texmf-texlive/fonts/type1/public/pxfonts/pxsy.pfb></usr/share/texmf-t
+exlive/fonts/type1/public/pxfonts/pxsya.pfb></usr/share/texmf-texlive/fonts/typ
+e1/public/pxfonts/pxsyc.pfb></usr/share/texmf-texlive/fonts/type1/public/pxfont
+s/rpxbsc.pfb></usr/share/texmf-texlive/fonts/type1/public/pxfonts/rpxr.pfb></us
+r/share/texmf-texlive/fonts/type1/public/txfonts/txtt.pfb></usr/share/texmf-tex
+live/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texmf-texlive/fonts/type1/
+urw/palatino/uplr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplr
+i8a.pfb>
+Output written on poster.pdf (1 page, 157880 bytes).
 PDF statistics:
- 70 PDF objects out of 1000 (max. 8388607)
+ 95 PDF objects out of 1000 (max. 8388607)
  3 named destinations out of 1000 (max. 500000)
- 51 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 61 words of extra memory for PDF output out of 10000 (max. 10000000)
 
