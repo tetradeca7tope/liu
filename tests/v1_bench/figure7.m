@@ -166,7 +166,7 @@ display('Computing correlations.')
 %corrGraph = estimateCorrelations(nodePot, edgePot, edgeStruct, 10, 10000);
 corrGraph = estimateCorrelations(nodePot, edgePot, edgeStruct, 10, 1000);
 display('Partitioning.')
-partition = treePartition('GreedyTree', corrGraph);
+partition = treePartition('GreedyTree', corrGraph, -1);
 
 % We need to convert the partition into a cell array and remove the trailing zeros
 % that wenlu had to add.
