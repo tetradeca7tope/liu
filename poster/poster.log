@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.12.20)  29 APR 2014 22:05
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.12.20)  30 APR 2014 10:07
 entering extended mode
  %&-line parsing enabled.
 **poster.tex
@@ -1485,51 +1485,51 @@ Overfull \hbox (9.67122pt too wide) detected at line 30
 File: figs/orig_graph.pdf Graphic file (type pdf)
 
 <use figs/orig_graph.pdf>
-LaTeX Font Info:    Calculating math sizes for size <30.96> on input line 345.
-LaTeX Font Info:    Try loading font information for U+zeur on input line 345.
+LaTeX Font Info:    Calculating math sizes for size <30.96> on input line 354.
+LaTeX Font Info:    Try loading font information for U+zeur on input line 354.
  (/usr/share/texmf-texlive/tex/latex/eulervm/uzeur.fd
 File: uzeur.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Try loading font information for U+zeus on input line 345.
+LaTeX Font Info:    Try loading font information for U+zeus on input line 354.
 (/usr/share/texmf-texlive/tex/latex/eulervm/uzeus.fd
 File: uzeus.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Try loading font information for U+zeuex on input line 345.
+LaTeX Font Info:    Try loading font information for U+zeuex on input line 354.
 
 
 (/usr/share/texmf-texlive/tex/latex/eulervm/uzeuex.fd
 File: uzeuex.fd 2005/01/11 v4.0 (WaS)
 )
-LaTeX Font Info:    Try loading font information for U+pxsya on input line 345.
+LaTeX Font Info:    Try loading font information for U+pxsya on input line 354.
 
 
 (/usr/share/texmf-texlive/tex/latex/pxfonts/upxsya.fd
 File: upxsya.fd 2000/12/14 v1.0
 )
-LaTeX Font Info:    Try loading font information for U+pxsyb on input line 345.
+LaTeX Font Info:    Try loading font information for U+pxsyb on input line 354.
 
 
 (/usr/share/texmf-texlive/tex/latex/pxfonts/upxsyb.fd
 File: utxsyb.fd 2000/12/14 v1.0
 )
-LaTeX Font Info:    Try loading font information for U+pxmia on input line 345.
+LaTeX Font Info:    Try loading font information for U+pxmia on input line 354.
 
 
 (/usr/share/texmf-texlive/tex/latex/pxfonts/upxmia.fd
 File: upxmia.fd 2000/12/14 v1.0
 )
-LaTeX Font Info:    Try loading font information for U+pxsyc on input line 345.
+LaTeX Font Info:    Try loading font information for U+pxsyc on input line 354.
 
 
 (/usr/share/texmf-texlive/tex/latex/pxfonts/upxsyc.fd
 File: upxsyc.fd 2000/12/14 v1.0
 )
 LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <30.96> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
 LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <21.6719> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
 LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <15.48> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
 
 
 ! LaTeX Error: Too many math alphabets used in version normal.
@@ -1538,7 +1538,7 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.345 \end{frame}
+l.354 \end{frame}
                  
 ? 
 <figs/blocked_gibbs.pdf, id=15, 280.77698pt x 263.78549pt>
@@ -1554,13 +1554,13 @@ File: figs/bg2.pdf Graphic file (type pdf)
 File: figs/bg3.pdf Graphic file (type pdf)
 
 <use figs/bg3.pdf>
-LaTeX Font Info:    Calculating math sizes for size <8.64> on input line 345.
+LaTeX Font Info:    Calculating math sizes for size <8.64> on input line 354.
 LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <8.64> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
 LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <6.04796> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
 LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <4.31999> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
  <figs/weighted.pdf, id=23, 280.77563pt x 264.05922pt>
 File: figs/weighted.pdf Graphic file (type pdf)
 
@@ -1569,34 +1569,34 @@ File: figs/weighted.pdf Graphic file (type pdf)
 File: figs/weighted_partition2.pdf Graphic file (type pdf)
 
 <use figs/weighted_partition2.pdf>
-LaTeX Font Info:    Calculating math sizes for size <14.93> on input line 345.
-LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <14.93> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
-LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <10.45094> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
-LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <7.465> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
-LaTeX Font Info:    Calculating math sizes for size <7.2> on input line 345.
+LaTeX Font Info:    Calculating math sizes for size <21.5> on input line 354.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <21.5> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <15.04993> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <10.75> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
+LaTeX Font Info:    Calculating math sizes for size <7.2> on input line 354.
 LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <7.2> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
 LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <5.03996> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
 LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <3.59999> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
-LaTeX Font Info:    Calculating math sizes for size <12.44> on input line 345.
-LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <12.44> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
-LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <8.70796> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
-LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <6.22> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
-LaTeX Font Info:    Calculating math sizes for size <10.37> on input line 345.
-LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <10.37> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
-LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <7.25896> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
-LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <5.185> not available
-(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 345.
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
+LaTeX Font Info:    Calculating math sizes for size <17.92> on input line 354.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <17.92> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <12.54393> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <8.95999> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
+LaTeX Font Info:    Calculating math sizes for size <14.93> on input line 354.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <14.93> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <10.45094> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
+LaTeX Font Info:    Font shape `OT1/pxr/b/n' in size <7.465> not available
+(Font)              Font shape `OT1/pxr/bx/n' tried instead on input line 354.
 
 
 ! LaTeX Error: Too deeply nested.
@@ -1605,18 +1605,18 @@ See the LaTeX manual or LaTeX Companion for explanation.
 Type  H <return>  for immediate help.
  ...                                              
                                                   
-l.345 \end{frame}
+l.354 \end{frame}
                  
 ? 
-<TotalTrees-Vs-MaxTreeSize.png, id=27, 602.25pt x 372.39125pt>
+<TotalTrees-Vs-MaxTreeSize.png, id=27, 510.90875pt x 358.33875pt>
 File: TotalTrees-Vs-MaxTreeSize.png Graphic file (type png)
 
 <use TotalTrees-Vs-MaxTreeSize.png>
-<MedianTreeSize-Vs-MaxTreeSize.png, id=29, 706.64pt x 460.72125pt>
+<MedianTreeSize-Vs-MaxTreeSize.png, id=29, 572.1375pt x 423.5825pt>
 File: MedianTreeSize-Vs-MaxTreeSize.png Graphic file (type png)
 
 <use MedianTreeSize-Vs-MaxTreeSize.png>
-Overfull \vbox (10.0944pt too high) detected at line 345
+Overfull \vbox (10.0944pt too high) detected at line 354
  []
 
 
@@ -1641,33 +1641,32 @@ Overfull \hbox (9.67122pt too wide) has occurred while \output is active
 
  (./poster.aux) ) 
 Here is how much of TeX's memory you used:
- 17181 strings out of 493848
- 307727 string characters out of 1152822
- 536017 words of memory out of 3000000
- 19868 multiletter control sequences out of 15000+50000
- 114170 words of font info for 357 fonts, out of 3000000 for 9000
+ 17183 strings out of 493848
+ 307811 string characters out of 1152822
+ 533735 words of memory out of 3000000
+ 19869 multiletter control sequences out of 15000+50000
+ 114960 words of font info for 359 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
- 49i,17n,66p,434b,1532s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 49i,17n,66p,434b,1558s stack positions out of 5000i,500n,10000p,200000b,50000s
 {/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/sh
 are/texmf-texlive/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-t
 exlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texmf-texlive/fonts
 /type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/type1/publ
 ic/amsfonts/euler/euex10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfo
 nts/euler/eufm10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/eule
-r/eufm7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/euler/eurm10.
-pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/euler/eusm10.pfb></us
-r/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam10.pfb></usr/shar
-e/texmf-texlive/fonts/type1/public/pxfonts/pxsy.pfb></usr/share/texmf-texlive/f
-onts/type1/public/pxfonts/pxsya.pfb></usr/share/texmf-texlive/fonts/type1/publi
-c/pxfonts/pxsyb.pfb></usr/share/texmf-texlive/fonts/type1/public/pxfonts/pxsyc.
-pfb></usr/share/texmf-texlive/fonts/type1/public/pxfonts/rpxbsc.pfb></usr/share
-/texmf-texlive/fonts/type1/public/pxfonts/rpxr.pfb></usr/share/texmf-texlive/fo
-nts/type1/urw/palatino/uplb8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/pal
-atino/uplr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/uplri8a.pfb
->
-Output written on poster.pdf (1 page, 233897 bytes).
+r/eurm10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/euler/eusm10
+.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/symbols/msam10.pfb><
+/usr/share/texmf-texlive/fonts/type1/public/pxfonts/pxsy.pfb></usr/share/texmf-
+texlive/fonts/type1/public/pxfonts/pxsya.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/pxfonts/pxsyb.pfb></usr/share/texmf-texlive/fonts/type1/public/pxfon
+ts/pxsyc.pfb></usr/share/texmf-texlive/fonts/type1/public/pxfonts/rpxbsc.pfb></
+usr/share/texmf-texlive/fonts/type1/public/pxfonts/rpxr.pfb></usr/share/texmf-t
+exlive/fonts/type1/urw/palatino/uplb8a.pfb></usr/share/texmf-texlive/fonts/type
+1/urw/palatino/uplr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/palatino/up
+lri8a.pfb>
+Output written on poster.pdf (1 page, 224638 bytes).
 PDF statistics:
- 124 PDF objects out of 1000 (max. 8388607)
+ 120 PDF objects out of 1000 (max. 8388607)
  3 named destinations out of 1000 (max. 500000)
  96 words of extra memory for PDF output out of 10000 (max. 10000000)
 
