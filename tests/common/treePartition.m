@@ -52,11 +52,9 @@ function partition = treePartition(...
     
     cmd = ['python ', pyscript, ' ', ...
        algo, ' ', graph_fn, ' ', ...
-       num2str(maxTreeSize), ' ', outputOption]
+       num2str(maxTreeSize), ' ', outputOption];
     
     [status, cmdout] = dos(cmd);
 
-    cmdout
-    size(cmdout)
     partition = str2num(cmdout);
 end
