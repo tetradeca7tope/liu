@@ -57,14 +57,23 @@
 
   \begin{beamercolorbox}[wd=\paperwidth]{headline}
     \begin{columns}[T]
-      \begin{column}{.3\paperwidth}
+      \begin{column}{.025\paperwidth}
       \end{column}
-      \begin{column}{.675\paperwidth}
+      \begin{column}{.475\paperwidth}
+        \vskip10ex
+        \raggedright
+        \usebeamercolor{institute in headline}{\color{fg}\huge{\insertinstitute}\\[1ex]}
+        \usebeamercolor{author in headline}{\color{fg}\textbf{\huge
+            keywords: MCMC, Gibbs Sampling, Markov Networks, Mixing Time }\\[1ex]}
+        \vskip2ex
+      \end{column}
+      \begin{column}{.475\paperwidth}
         \vskip4ex
         \raggedleft
         \usebeamercolor{title in headline}{\color{fg}\textbf{\Huge{\inserttitle}}\\[1ex]}
         \usebeamercolor{author in headline}{\color{fg}\huge{\insertauthor}\\[1ex]}
-        \usebeamercolor{institute in headline}{\color{fg}\LARGE{\insertinstitute}\\[1ex]}
+        \usebeamercolor{author in headline}{\color{fg}\huge{
+             \{wenluh, kkandasa, jtassaro\}@cs.cmu.edu  }\\[1ex]}
         \vskip2ex
       \end{column}
       \begin{column}{.025\paperwidth}

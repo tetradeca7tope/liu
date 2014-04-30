@@ -4,23 +4,23 @@
 \usepackage{framed,graphicx}
 \usepackage{kky}
 % \graphicspath{{./figures/}}
-\usepackage[orientation=landscape,size=custom,width=78,height=95,scale=.6,debug]{beamerposter}
+\usepackage[orientation=landscape,size=custom,width=78,height=91,scale=.6,debug]{beamerposter}
 
 % Prelims
 %%%%%%%%%
 \fontsize{0.5cm}{1em}\selectfont
 
 %-- Header and footer information ----------------------------------
-\newcommand{\footleft}{keywords: Gibbs Sampling, Markov Networks, Mixing Times}
-\newcommand{\footright}{ \{wenluh, kkandasa, jtassro\} @ cs.cmu.edu }
+\newcommand{\footleft}{}
+\newcommand{\footright}{  }
 \title{Improving Mixing times in Gibbs Sampling}
 \author{Wenlu Hu \quad Kirthevasan Kandasamy \quad Joseph Tassarotti}
 \institute{10-701 Introduction to Machine Learning, Course Project}
 %-------------------------------------------------------------------
 
 % Some commands we will need
-\newcommand{\itemlinespace}{0.3in}
-\newcommand{\paralinespace}{0.6in}
+\newcommand{\itemlinespace}{0.22in}
+\newcommand{\paralinespace}{0.5in}
 \newcommand{\insertlinespace}{\vspace{\itemlinespace}}
 \newcommand{\insertparaspace}{\vspace{\paralinespace}}
 \newcommand{\semititle}[1]{\textcolor{red}{\Huge \textbf{#1}}}
@@ -115,7 +115,7 @@
         \insertparaspace
         \semititle{How to Block ?} \\
           \insertlinespace
-          \newcommand{\localimgwidtha}{4in}
+          \newcommand{\localimgwidtha}{3in}
           \hspace{0.5in}
           \includegraphics[width=\localimgwidtha]{figs/bg1} \hspace{0.5in}
           \includegraphics[width=\localimgwidtha]{figs/bg2} \hspace{0.5in} 
@@ -151,7 +151,7 @@
         \insertlinespace
 
       $L_0(\pi) = \{ h:\Omega \rightarrow \RR :\; \EE_{\pi} h(X) = 0, \;
-                        \VV_{\pi}h(X) < \infty \}$, \hspace{0.1in}
+                        \VV_{\pi}h(X) < \infty \}$, \hspace{0.05in}
       $\langle h, g \rangle = \text{Covar}_\pi(h(X), g(X))$ \\
       $\big(L_0(\pi), \langle \cdot, \cdot \rangle \big)$ is a Hilbert Space.
       \insertlinespace
@@ -305,50 +305,58 @@
       \end{block}
 
       %-- Block 2-1
-      \begin{block}{Lists}
-        \begin{itemize}
-          \item You can make
-          \item lists, that
-          \item allow people to see quickly
-        \end{itemize}
+      \begin{block}{ \Huge Experiments - Image Reconstruction}
+      { \huge
+        Estimated Correlations by Running a Gibbs Sampler -- \textbf{Cheating !}.
+\\
+        This information could come via Expert Knowledge, Repetitive tasks etc.
+        \insertlinespace
+        
+        {\Large
+        \hspace{2in}
+        Image \hspace{2in}
+        Trees Produced by Greedy Edge \hspace{1.3in}
+        Error vs \# Iterations \\
+        }
+        \hspace{0.8in}
+      	\includegraphics[width=3in]{figs/mandrill.png} \hspace{0.8in}
+      	\includegraphics[width=4in]{figs/gridtrees} \hspace{0.8in}
+      	\includegraphics[width=4in]{figs/reconstruction} \\
+      Note that CB/ Two-Trees have only 2 trees whereas we had $> 200$ trees.
+
+      }
       \end{block}
 
       %-- Block 2-2
-      \begin{block}{Math}
-        Include math within the text is as simple as $1+1=2$.  You can also
-        highlight more important equations like this:
-        \begin{equation*}
-          \int_0^1\sin(x)+\cos^2(x)+\alpha x~d\!x
-        \end{equation*}
-      \end{block}
+      \begin{block}{ \Huge Conclusion}
+      { \huge
 
+      \begin{itemize}
+        \item Proposed method has good convergence in number of iterations.
+        \item But Naive Gibbs still beats us in computation time $\implies$ need
+better tree sampling implementation.
+        \item Criticism: Neighboring edges in a UGM are already quite correlated.
+              So unsure how well this would work in practice.
+      \end{itemize}
 
-      %-- Block 2-3
-      \begin{block}{Pictures}
-        \begin{figure}[htb]
-          \centering
-%           \includegraphics[width=.6\columnwidth]{science}
-        \end{figure}
-      \end{block}
+      \semititle{Acknowledgements} \\
+      { \Large
+      Elara Willet for helping us with the Graph Theory element of the project.
+      }
 
-      %-- Block 3-1
-      \begin{block}{Experiments}
-        Remember to put lots of figures on your poster... Nobody reads anymore!
-      \end{block}
-
-      %-- Block 3-2
-      \begin{block}{Conclusion}
-        Much less annoying than PowerPoint.  Copy and Paste from your
-        document. Overall, a great idea!
+      \semititle{References : } \\
+        { \Large
+        Firas Hamze, Nando de Freitas, \textbf{From Fields to Trees}, UAI 2004 \\
+        Liu Jun S, \textbf{Markov Chain Strategies in Scientific Computing}, 2001 \\
+        Liu Jun S, Wong Wing H, Kong Augustine, \textbf{Covariance structure of
+          the Gibbs Sampler with applications to the comparisons of estimators and
+          augmentation schemes}, Biometrika 1994.
+        }
+      }
       \end{block}
 
     \end{column}%2
 
-% I think we should do just 2 columns
-%     %-- Column 3 ---------------------------------------------------
-%     \begin{column}{0.32\linewidth}
-% 
-%     \end{column}%3
 
   \end{columns}
 \end{frame}
