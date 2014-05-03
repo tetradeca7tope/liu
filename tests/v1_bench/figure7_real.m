@@ -14,6 +14,7 @@ groupCB = []
 groupOT = []
 groupHF = []
 
+for i = 1:rounds
 
 display('Round...')
 display(i)
@@ -76,15 +77,6 @@ repblock = ones(nStates, nStates) + diag(repmat(2, nStates, 1));
 %edgePot = repmat([1.35 1;1 1.35],[1 1 edgeStruct.nEdges]);
 edgePot = repmat(repblock,[1 1 edgeStruct.nEdges]);
 
-tic;
-display('Computing correlations.')
-%corrGraph = estimateCorrelations(nodePot, edgePot, edgeStruct, 10, 10000);
-corrGraph = estimateCorrelations(nodePot, edgePot, edgeStruct, 10, 100);
-toc
-display('Partitioning.')
-partition = treePartition('GreedyTree', corrGraph, 20);
-
-for i = 1:rounds
 
 burnIn = 0;
 iterRange = 10;
@@ -169,6 +161,14 @@ end
 
 %%% Our algorithm 
 
+tic;
+display('Computing correlations.')
+%corrGraph = estimateCorrelations(nodePot, edgePot, edgeStruct, 10, 10000);
+corrGraph = estimateCorrelations(nodePot, edgePot, edgeStruct, 10, 1000);
+toc
+display('Partitioning.')
+partition = treePartition('GreedyTree', corrGraph, 20);
+
 % We need to convert the partition into a cell array and remove the trailing zeros
 % that wenlu had to add.
 [nBlocks, junk] = size(partition);
@@ -194,6 +194,7 @@ for i = 1:maxSteps
     recon = reshape(nodeLabels, nRows, nCols);
     errorRatesBlockOT(i) = (sum(sum(abs(1 - (recon == image))))) / nNodes;
     subplot(2,5,i);
+    recon(1:5, 1:5)
     imagesc(recon);
     colormap gray
 end
@@ -249,11 +250,6 @@ for i = 1:maxSteps
     imagesc(recon);
     colormap gray
 end
-
-errorRatesNaive
-errorRatesBlockCB
-errorRatesBlockOT
-errorRatesBlockHF
 
 groupNaive = [groupNaive ; errorRatesNaive];
 groupCB = [groupCB ; errorRatesBlockCB];
