@@ -15,7 +15,7 @@
   \texttt{wenlu@cmu.edu}
 \And
   Kirthevasan Kandasamy\\
-  Andrew ID: kkandasa\\
+  Andrew ID: \texttt{kkandasa}\\
   \texttt{kandasamy@cmu.edu}
 \And
   Joseph Tassarotti \\
@@ -456,8 +456,9 @@ then tried to reconstruct the original image using different blocking strategies
 \item Trees generated using Greedy Edge algorithm -- These used the same correlation estimates and tree size maximums.
 \end{enumerate}
 
-The first of these three strategies were compared in~\cite{hamze2004fields}.
-Our experiments were conducted using Schmidt's MATLAB library for undirected
+A visualization of the various blocks is shown in figure~\ref{fig:blockMaps}. The
+first of these three strategies were compared in~\cite{hamze2004fields}.  Our
+experiments were conducted using Schmidt's MATLAB library for undirected
 graphical models~\cite{schmidt07ugm}, which we modified to add in the
 Rao-Blackwellized tree sampler described in~\cite{hamze2004fields}. Each of the
 five MCMC chains for each trial were started from the same initial point.
@@ -472,6 +473,14 @@ total computation time. In practice, the Two Trees strategy and the
 automatically generated trees were considerably slower than the Checker Board
 and the Naive Gibbs sampler, but this may be an artifact of the implementation
 we used.
+
+\begin{figure}
+\begin{center}
+\includegraphics[width=5in]{figures/block_maps.png}
+\caption[]{Visualization of different blocks. Each color represents a separate block. The Greedy Edge and Greedy Tree blocks have a maximum tree size of $20$.}
+\label{fig:blockMaps}
+\end{center}
+\end{figure}
 
 \begin{figure}
 \begin{center}

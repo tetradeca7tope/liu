@@ -11,7 +11,7 @@ image = image/downrate;
 nStates = 256/downrate;
 nNodes = nRows * nCols;
 
-rounds = 30
+rounds = 1
 
 groupNaive = [];
 groupCB = [];
@@ -143,7 +143,7 @@ b1Ind = nNodes/2;
 blocks = {blocks1;blocks2};
 
 errorRatesBlockCB = reconstruct(image, nRows, nCols, nodePot, edgePot, edgeStruct, burnIn, blocks, initial, maxSteps, stepSize)
-
+colorsCB = plot_blocks(blocks, nRows, nCols)
 %%% Greedy Tree + Edge
 
 tic;
@@ -154,11 +154,13 @@ toc
 display('Partitioning -- GreedyEdge')
 partition = treePartition('GreedyEdge', corrGraph, 20);
 blocks = partition_to_blocks(partition);
+colorsGE = plot_blocks(blocks, nRows, nCols);
 errorRatesBlockGE = reconstruct(image, nRows, nCols, nodePot, edgePot, edgeStruct, burnIn, blocks, initial, maxSteps, stepSize)
 
 display('Partitioning -- GreedyTree')
 partition = treePartition('GreedyTree', corrGraph, 20);
 blocks = partition_to_blocks(partition);
+colorsGT = plot_blocks(blocks, nRows, nCols);
 errorRatesBlockGT = reconstruct(image, nRows, nCols, nodePot, edgePot, edgeStruct, burnIn, blocks, initial, maxSteps, stepSize)
 
 %%%% HF Block Gibbs sampling
@@ -185,6 +187,7 @@ for j = 1:nCols
 end
 blocks = {blocks1;blocks2};
 
+colorsHF = plot_blocks(blocks, nRows, nCols);
 errorRatesBlockHF = reconstruct(image, nRows, nCols, nodePot, edgePot, edgeStruct, burnIn, blocks, initial, maxSteps, stepSize)
 
 groupNaive = [groupNaive ; errorRatesNaive];
@@ -193,11 +196,11 @@ groupGT = [groupGT ; errorRatesBlockGT];
 groupGE = [groupGE ; errorRatesBlockGE];
 groupHF = [groupHF ; errorRatesBlockHF];
 
-dlmwrite('naive.mat', groupNaive);
-dlmwrite('cb.mat', groupCB);
-dlmwrite('gt.mat', groupGT);
-dlmwrite('ge.mat', groupGE);
-dlmwrite('hf.mat', groupHF);
+%dlmwrite('naive.mat', groupNaive);
+%dlmwrite('cb.mat', groupCB);
+%dlmwrite('gt.mat', groupGT);
+%dlmwrite('ge.mat', groupGE);
+%dlmwrite('hf.mat', groupHF);
 
 end
 
