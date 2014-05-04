@@ -1,4 +1,9 @@
-image = rgb2gray(imresize(imread('mandrill.tiff'), .10));
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Load the initial image
+%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+image = rgb2gray(imresize(imread('mandrill.tiff'), .125));
 [nRows, nCols] = size(image)
 % Downsample
 downrate = 16;
@@ -6,22 +11,22 @@ image = image/downrate;
 nStates = 256/downrate;
 nNodes = nRows * nCols;
 
-% How many pixels to flip
 rounds = 30
 
-groupNaive = []
-groupCB = []
-groupOT = []
-groupHF = []
+groupNaive = [];
+groupCB = [];
+groupGT = [];
+groupGE = [];
+groupHF = [];
 
-for i = 1:rounds
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%  Add noise to the image
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-display('Round...')
-display(i)
-
+% How many pixels to flip
 noiseLevel = nNodes * .25;
 
-%figure(1);
+figure(1);
 imagesc(image);
 colormap gray
 
@@ -38,11 +43,9 @@ for i = 1:noiseLevel
     noisyImage(ind2sub(size(image), perm(i))) = mod(old + offset, nStates) + 1;
 end
 
-%%figure(2);
-imagesc(noisyImage);
-colormap gray
-
-%% Construct the UGM -- following the construction in ../UGM/examples/getNoisyX.m 
+%%%%%%%%%%%%%%%%%%%%%%%
+% Construct the UGM -- following the construction in ../UGM/examples/getNoisyX.m 
+%%%%%%%%%%%%%%%%%%%%%%%
 
 display('Constructing graph.')
 adj = sparse(nNodes,nNodes);
@@ -77,6 +80,9 @@ repblock = ones(nStates, nStates) + diag(repmat(2, nStates, 1));
 %edgePot = repmat([1.35 1;1 1.35],[1 1 edgeStruct.nEdges]);
 edgePot = repmat(repblock,[1 1 edgeStruct.nEdges]);
 
+%%figure(2);
+imagesc(noisyImage);
+colormap gray
 
 burnIn = 0;
 iterRange = 10;
@@ -84,17 +90,24 @@ maxSteps = 10;
 stepSize = iterRange/maxSteps;
 
 %%% Generate the initial point that all of the MCMC chains will start from
+
 % Start at max of node potentials (ie: basically from the corrupted image)
 %[junk initial] = max(nodePot, [], 2);
 
 % Random initialization
 initial = randi(nStates, [nNodes 1]);
 
+for i = 1:rounds
+
+display('Round...')
+display(i)
+
 % Naive Gibbs
 %%figure(3);
 
 edgeStruct.maxIter = iterRange;
 edgeStruct.useMex = 0;
+
 tic;
 samplesNaiveGibbs = UGM_Sample_Gibbs(nodePot,edgePot,edgeStruct,burnIn, initial);
 toc
@@ -104,15 +117,11 @@ for i = 1:maxSteps
 	
     maxOfMarginalsGibbsDecode = UGM_Decode_MaxOfMarginals(nodePot,edgePot,edgeStruct, @UGM_Infer_Sample, @(nodePot, edgePot, edgeStruct, v) (samplesNaiveGibbs(:, 1:edgeStruct.maxIter)),burnIn);
 
-    %maxOfMarginalsGibbsDecode = UGM_Decode_MaxOfMarginals(nodePot,edgePot,edgeStruct, @UGM_Infer_Sample,@UGM_Sample_Gibbs,burnIn);
-
     recon = reshape(maxOfMarginalsGibbsDecode, nRows, nCols);
-%    recon = double(reshape(samplesNaiveGibbs(:,edgeStruct.maxIter), ...
-%                     nRows, nCols));
     errorRatesNaive(i) = (sum(sum(abs(1 - (recon == image))))) / nNodes;
-    subplot(2,5,i);
-    imagesc(recon);
-    colormap gray
+    %subplot(2,5,i);
+    %imagesc(recon);
+    %colormap gray
 end
 
 %%% Checker
@@ -133,76 +142,27 @@ end
 b1Ind = nNodes/2;
 blocks = {blocks1;blocks2};
 
-%%% Visualize the blocks
-%%%figure(4);
-%visual = zeros(nNodes, 1);
-%for j = 1:b1Ind
-%    visual(blocks2(j)) = 1;
-%end
-%imagesc(reshape(visual, nRows, nCols));
-%colormap gray
+errorRatesBlockCB = reconstruct(image, nRows, nCols, nodePot, edgePot, edgeStruct, burnIn, blocks, initial, maxSteps, stepSize)
 
-%%figure(5);
-edgeStruct.maxIter = iterRange;
-tic;
-[nodeBelHist junk] = UGM_Sample_Infer_Block_Gibbs(nodePot,edgePot,edgeStruct,burnIn,blocks,...
-                                                  @UGM_Sample_Infer_Tree, initial);
-toc
-
-for i = 1:maxSteps
-    upto = i*stepSize;
-    [junk nodeLabels] = max(nodeBelHist(:, :, upto), [], 2);
-    recon = reshape(nodeLabels, nRows, nCols);
-    errorRatesBlockCB(i) = (sum(sum(abs(1 - (recon == image))))) / nNodes;
-    subplot(2,5,i);
-    imagesc(recon);
-    colormap gray
-end
-
-%%% Our algorithm 
+%%% Greedy Tree + Edge
 
 tic;
 display('Computing correlations.')
-%corrGraph = estimateCorrelations(nodePot, edgePot, edgeStruct, 10, 10000);
-corrGraph = estimateCorrelations(nodePot, edgePot, edgeStruct, 10, 1000);
+corrGraph = estimateCorrelations(nodePot, edgePot, edgeStruct, 10, 100);
 toc
-display('Partitioning.')
+
+display('Partitioning -- GreedyEdge')
+partition = treePartition('GreedyEdge', corrGraph, 20);
+blocks = partition_to_blocks(partition);
+errorRatesBlockGE = reconstruct(image, nRows, nCols, nodePot, edgePot, edgeStruct, burnIn, blocks, initial, maxSteps, stepSize)
+
+display('Partitioning -- GreedyTree')
 partition = treePartition('GreedyTree', corrGraph, 20);
-
-% We need to convert the partition into a cell array and remove the trailing zeros
-% that wenlu had to add.
-[nBlocks, junk] = size(partition);
-blocks = {};
-for i = 1:nBlocks
-	row = partition(i, :);
-	last = find(row, 1, 'last');
-	blocks{i} = row(1:last)';
-end
-
-blocks = blocks';
-
-%%figure(6);
-edgeStruct.maxIter = iterRange;
-tic;
-[nodeBelHist junk] = UGM_Sample_Infer_Block_Gibbs(nodePot,edgePot,edgeStruct,burnIn,blocks,...
-                                                  @UGM_Sample_Infer_Tree, initial);
-toc
-
-for i = 1:maxSteps
-    upto = i*stepSize;
-    [junk nodeLabels] = max(nodeBelHist(:, :, upto), [], 2);
-    recon = reshape(nodeLabels, nRows, nCols);
-    errorRatesBlockOT(i) = (sum(sum(abs(1 - (recon == image))))) / nNodes;
-    subplot(2,5,i);
-    recon(1:5, 1:5)
-    imagesc(recon);
-    colormap gray
-end
-
+blocks = partition_to_blocks(partition);
+errorRatesBlockGT = reconstruct(image, nRows, nCols, nodePot, edgePot, edgeStruct, burnIn, blocks, initial, maxSteps, stepSize)
 
 %%%% HF Block Gibbs sampling
 
-%% Make Blocks
 nodeNums = reshape(1:nNodes,nRows,nCols);
 blocks1 = zeros(nNodes/2,1);
 blocks2 = zeros(nNodes/2,1);
@@ -225,40 +185,18 @@ for j = 1:nCols
 end
 blocks = {blocks1;blocks2};
 
-%% Visualize the blocks
-%%%figure(6)
-%visual = zeros(nNodes, 1);
-%for j = 1:b1Ind
-%    visual(blocks2(j)) = 1;
-%end
-%imagesc(reshape(visual, nRows, nCols));
-%colormap gray
-
-%%figure(7);
-edgeStruct.maxIter = iterRange;
-tic;
-[nodeBelHist junk] = UGM_Sample_Infer_Block_Gibbs(nodePot,edgePot,edgeStruct,burnIn,blocks,...
-                                                  @UGM_Sample_Infer_Tree, initial);
-toc
-
-for i = 1:maxSteps
-    upto = i*stepSize;
-    [junk nodeLabels] = max(nodeBelHist(:, :, upto), [], 2);
-    recon = reshape(nodeLabels, nRows, nCols);
-    errorRatesBlockHF(i) = (sum(sum(abs(1 - (recon == image))))) / nNodes;
-    subplot(2,5,i);
-    imagesc(recon);
-    colormap gray
-end
+errorRatesBlockHF = reconstruct(image, nRows, nCols, nodePot, edgePot, edgeStruct, burnIn, blocks, initial, maxSteps, stepSize)
 
 groupNaive = [groupNaive ; errorRatesNaive];
 groupCB = [groupCB ; errorRatesBlockCB];
-groupOT = [groupOT ; errorRatesBlockOT];
+groupGT = [groupGT ; errorRatesBlockGT];
+groupGE = [groupGE ; errorRatesBlockGE];
 groupHF = [groupHF ; errorRatesBlockHF];
 
 dlmwrite('naive.mat', groupNaive);
 dlmwrite('cb.mat', groupCB);
-dlmwrite('out.mat', groupOT);
+dlmwrite('gt.mat', groupGT);
+dlmwrite('ge.mat', groupGE);
 dlmwrite('hf.mat', groupHF);
 
 end
@@ -274,3 +212,4 @@ end
 %plot(errorRatesBlockHF, 'g-x');
 %legend('Naive', 'Checker Board', 'Hamze-Freitas');
 %
+
