@@ -1,14 +1,23 @@
-This is BibTeX, Version 0.99c (TeX Live 2009/Debian)
+This is BibTeX, Version 0.99d (TeX Live 2013)
+Capacity: max_strings=35307, hash_size=35307, hash_prime=30011
 The top-level auxiliary file: final.aux
 The style file: alpha.bst
-I couldn't open database file final.bib
----line 55 of file final.aux
- : \bibdata{kky,final
- :                   }
-I'm skipping whatever remains of this command
 Database file #1: kky.bib
 Warning--entry type for "schmidt07ugm" isn't style-file defined
 --line 455 of file kky.bib
+Database file #2: final.bib
+Repeated entry---line 22 of file final.bib
+ : @inproceedings{hamze2006information
+ :                                    ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 29 of file final.bib
+ : @inproceedings{hamze2004fields
+ :                               ,
+I'm skipping whatever remains of this entry
+Repeated entry---line 49 of file final.bib
+ : @phdthesis{rivasseau2005jungle
+ :                               ,
+I'm skipping whatever remains of this entry
 You've used 6 entries,
             2543 wiz_defined-function locations,
             590 strings with 5319 characters,
@@ -50,4 +59,4 @@ warning$ -- 0
 while$ -- 19
 width$ -- 9
 write$ -- 75
-(There was 1 error message)
+(There were 3 error messages)
