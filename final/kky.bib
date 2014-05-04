@@ -1,4 +1,28 @@
 
+@inproceedings{balcan06agnosticAL,
+  author    = {Maria-Florina Balcan and
+               Alina Beygelzimer and
+               John Langford},
+  title     = {Agnostic active learning},
+  booktitle = {ICML},
+  year      = {2006},
+  pages     = {65-72},
+}
+
+@article{balcan10alsamplecomplexity,
+  author    = {Maria-Florina Balcan and
+               Steve Hanneke and
+               Jennifer Wortman Vaughan},
+  title     = {The true sample complexity of active learning},
+  journal   = {Machine Learning},
+  volume    = {80},
+  number    = {2-3},
+  year      = {2010},
+  pages     = {111-139},
+  ee        = {http://dx.doi.org/10.1007/s10994-010-5174-y},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+
 @article{berger96maxentnlp,
  author = {Berger, Adam L. and Pietra, Vincent J. Della and Pietra,
            Stephen A. Della},
@@ -13,6 +37,20 @@
  publisher = {MIT Press},
  address = {Cambridge, MA, USA},
 } 
+
+@inproceedings{beygelzimer10agnostical,
+  author    = {Alina Beygelzimer and
+               Daniel Hsu and
+               John Langford and
+               Tong Zhang},
+  title     = {Agnostic Active Learning Without Constraints},
+  booktitle = {NIPS},
+  year      = {2010},
+  pages     = {199-207},
+  ee        = {http://books.nips.cc/papers/files/nips23/NIPS2010_0363.pdf},
+  crossref  = {DBLP:conf/nips/2010},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
 
 @incollection{bryan06activelevelsets,
  title = {Active Learning For Identifying Function Threshold Boundaries},
@@ -35,13 +73,57 @@
  address = {Pittsburgh, PA, USA},
 } 
 
-@book{robert05mcstatmethods,
- author = {Robert, Christian P. and Casella, George},
- title = {{Monte Carlo Statistical Methods (Springer Texts in Statistics)}},
- year = {2005},
- publisher = {Springer-Verlag New York, Inc.},
- address = {Secaucus, NJ, USA},
+@inproceedings{castro05ratesalregression,
+  author    = {Rui Castro and
+               Rebecca Willett and
+               Robert Nowak},
+  title     = {Faster Rates in Regression via Active Learning},
+  booktitle = {NIPS},
+  year      = {2005},
+}
+
+@techreport{castro05alregressiontr,
+  author    = {Rui Castro and
+               Rebecca Willett and
+               Robert Nowak},
+  title     = {Faster Rates in Regression via Active Learning},
+  institution = {University of Wisconsin - Madison},
+  month = {June},
+  year = 2005 
+}
+
+@article{malloy13adaptiveCompressedSensing,
+  author    = {Matthew Malloy and
+               Robert D. Nowak},
+  title     = {Near-Optimal Adaptive Compressed Sensing},
+  journal   = {CoRR},
+  volume    = {abs/1306.6239},
+  year      = {2013},
+  ee        = {http://arxiv.org/abs/1306.6239},
+  bibsource = {DBLP, http://dblp.uni-trier.de}
+}
+
+@inproceedings{castro07minimaxal,
+ author = {Castro, Rui M. and Nowak, Robert D.},
+ title = {{Minimax Bounds for Active Learning}},
+ booktitle = {Proceedings of the 20th Annual Conference on Learning Theory},
+ series = {COLT'07},
+ year = {2007},
+ pages = {5--19},
+ publisher = {Springer-Verlag},
+ address = {Berlin, Heidelberg},
 } 
+
+@article{cohn94improving,
+  title={{Improving Generalization with Active Learning}},
+  author={Cohn, David and Atlas, Les and Ladner, Richard},
+  journal={Machine learning},
+  volume={15},
+  number={2},
+  pages={201--221},
+  year={1994},
+  publisher={Kluwer Academic Publishers}
+}
 
 @article{cohn96alstatmodels,
   author    = {David A. Cohn and
@@ -54,6 +136,38 @@
   pages     = {129-145},
 }
 
+@inproceedings{dasgupta07generalAgnosticAL,
+  author    = {Sanjoy Dasgupta and
+               Daniel Hsu and
+               Claire Monteleoni},
+  title     = {A general agnostic active learning algorithm},
+  booktitle = {NIPS},
+  year      = {2007},
+}
+
+@article{dasgupta11twofacesal,
+  author    = {Sanjoy Dasgupta},
+  title     = {Two faces of active learning},
+  journal   = {Theor. Comput. Sci.},
+  volume    = {412},
+  number    = {19},
+  year      = {2011},
+  pages     = {1767-1781},
+}
+
+
+@article{eriksson11activeclustering,
+  author    = {Brian Eriksson and
+               Gautam Dasarathy and
+               Aarti Singh and
+               Robert Nowak},
+  title     = {{Active Clustering: Robust and Efficient Hierarchical Clustering
+               using Adaptively Selected Similarities}},
+  journal   = {CoRR},
+  volume    = {abs/1102.3887},
+  year      = {2011},
+}
+
 @inproceedings{kapoor07algpsincv, 
   author={Kapoor, A. and Grauman, K. and Urtasun, R. and Darrell, T.}, 
   booktitle={{Computer Vision, 2007. ICCV 2007. IEEE 11th International
@@ -61,6 +175,15 @@
   title= {{Active Learning with Gaussian Processes for Object Categorization}}, 
   year={2007}, 
   pages={1-8}, 
+}
+
+@book{korostelev93minimaximage,
+  title = {{Minimax theory of image reconstruction}},
+  series = {Lecture notes in statistics},
+  author = {Korostelev, A. P. and Tsybakov, A. B.},
+  address = {New York},
+  publisher = {Springer},
+  year = {1993}
 }
 
 @inproceedings{krause07nonmyopical,
@@ -76,6 +199,15 @@
  address = {New York, NY, USA},
 } 
 
+@inproceedings{krishnamurthy12activehierarchicalclustering,
+  author    = {Akshay Krishnamurthy and
+               Sivaraman Balakrishnan and
+               Min Xu and
+               Aarti Singh},
+  title     = {{Efficient Active Algorithms for Hierarchical Clustering}},
+  booktitle = {ICML},
+  year      = {2012},
+}
 
 @article{fukumizu13kbr,
   author  = {Kenji Fukumizu and Le Song and Arthur Gretton},
@@ -93,6 +225,65 @@
   booktitle = {International Conference on Machine Learning (ICML)},
   month = {August},
   year = {2005},
+}
+
+@inproceedings{hamze2006information,
+  title= {{Information theory tools to rank MCMC algorithms on probabilistic
+           graphical models}},
+  author= {Hamze, Firas and Rivasseau, Jean-Noel and de Freitas, Nando},
+  booktitle= {{Proceedings of the UCSD Workshop on Information Theory and its
+               Applications Invited Paper, San Diego, CA}},
+  year={2006}
+}
+
+@inproceedings{hamze2004fields,
+  author    = {Firas Hamze and
+               Nando de Freitas},
+  title     = {{From Fields to Trees}},
+  booktitle = {UAI},
+  year      = {2004},
+  pages     = {243-250},
+}
+
+@inproceedings{hanneke07complexityagnostical,
+  author    = {Steve Hanneke},
+  title     = {{A bound on the Label Complexity of Agnostic Active Learning}},
+  booktitle = {ICML},
+  year      = {2007},
+  pages     = {353-360},
+}
+
+@inproceedings{hanneke07teachingdimension,
+  author    = {Steve Hanneke},
+  title     = {Teaching Dimension and the Complexity of Active Learning},
+  booktitle = {COLT},
+  year      = {2007},
+  pages     = {66-81},
+}
+
+@inproceedings{hanneke09adaptiverates,
+  author = {Hanneke, Steve},
+  booktitle = {COLT},
+  title = {{Adaptive Rates of Convergence in Active Learning.}},
+  year = 2009
+}
+
+@phdthesis{hanneke09thesis,
+ author = {Hanneke, Steve},
+ title = {{Theoretical Foundations of Active Learning}},
+ year = {2009},
+ publisher = {Carnegie Mellon University},
+ school = {Carnegie Mellon University},
+ address = {Pittsburgh, PA, USA},
+} 
+
+@inproceedings{hanneke10negativeresultsal,
+  author    = {Steve Hanneke and
+               Liu Yang},
+  title     = {Negative Results for Active Learning with Convex Losses},
+  booktitle = {AISTATS},
+  year      = {2010},
+  pages     = {321-325},
 }
 
 @book{landau05mcmcstatphysics,
@@ -201,6 +392,14 @@
   publisher={University Press Group Limited}
 }
 
+@book{robert05mcstatmethods,
+ author = {Robert, Christian P. and Casella, George},
+ title = {{Monte Carlo Statistical Methods (Springer Texts in Statistics)}},
+ year = {2005},
+ publisher = {Springer-Verlag New York, Inc.},
+ address = {Secaucus, NJ, USA},
+} 
+
 @techreport{casella11mcmchistory,
   author={Casella, George and Robert, Christian P.},
   title={{A Short History of Markov Chain Monte Carlo: Subjective Recollections
@@ -235,17 +434,35 @@
   pages     = {1209-1222},
 }
 
+@inproceedings{ramdas14aluniformnoise,
+  author    = {Aaditya Ramdas and
+               Barnabas Poczos and
+               Aarti Singh and
+               Larry Wassermen},
+  title     = {{An Analysis of Active Learning with Uniform Feature Noise}},
+  booktitle = {AISTATS},
+  year      = {2014},
+}
+
+@phdthesis{rivasseau2005jungle,
+  title= {{From the jungle to the garden: Growing trees for Markov Chain Monte
+Carlo inference in undirected graphical models}},
+  author={Rivasseau, Jean-No{\"e}l},
+  year={2005},
+  school={Citeseer}
+}
+
 @Online{schmidt07ugm,
-author = {Schmidt, Mark},
-title = {{UGM: Matlab Code for Undirected Graphical Models}},
-year = {2007},
-url = {http://www.di.ens.fr/~mschmidt/Software/UGM.html}
+  author = {Schmidt, Mark},
+  title = {{UGM: Matlab Code for Undirected Graphical Models}},
+  year = {2007},
+  url = {http://www.di.ens.fr/~mschmidt/Software/UGM.html}
 }
 
 @TechReport{settles10alsurvey,
   author = "Burr Settles",
   title = {{Active Learning Literature Survey}},
-  institution = "",
+  institution = "University of Wisconsin-Madison",
   year = "2010"
 }
 
@@ -265,6 +482,21 @@ url = {http://www.di.ens.fr/~mschmidt/Software/UGM.html}
   booktitle = {ICML},
   year      = {2009},
   pages     = {121},
+}
+
+@book{tsybakov08nonparam,
+ author = {Tsybakov, Alexandre B.},
+ title = {Introduction to Nonparametric Estimation},
+ year = {2008},
+ edition = {1st},
+ publisher = {Springer Publishing Company, Incorporated},
+} 
+
+@book{vapnik82dependencies,
+  title={{Estimation of Dependencies Based on Empiricial Data}},
+  author={Vapnik, V},
+  year={1982},
+  publisher={Springer-Verlag, New York}
 }
 
 @InProceedings{zhu03active,
