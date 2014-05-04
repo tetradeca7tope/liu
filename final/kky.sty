@@ -1,6 +1,7 @@
 
 \RequirePackage{amsmath}
 \RequirePackage{amssymb}
+\RequirePackage{mathtools}
 \ifx\proof\undefined 
 \RequirePackage{amsthm}
 \fi
@@ -97,6 +98,7 @@
 % Widely accepted definitions (from MKolar, James & Akshay)
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\CC}{\mathbb{C}} % Complex numbers
+\newcommand{\DD}{\mathbb{D}} % \mathbb(D) 
 \newcommand{\EE}{\mathbb{E}} % Expectation
 \newcommand{\VV}{\mathbb{V}} % Variance
 \newcommand{\II}{\mathbb{I}} % Indicator
@@ -107,9 +109,9 @@
 \newcommand{\PP}{\mathbb{P}} % Probability
 \newcommand{\QQ}{\mathbb{Q}} % Rationals
 \newcommand{\RR}{\mathbb{R}} % Real numbers
-\newcommand{\ZZ}{\mathbb{Z}} % Integers
 \newcommand{\XX}{\mathbb{X}} %
 \newcommand{\YY}{\mathbb{Y}} %
+\newcommand{\ZZ}{\mathbb{Z}} % Integers
 % Indicator function
 \newcommand{\indfone}{\mathbbm{1}}
 \newcommand{\indfI}{I}
@@ -127,6 +129,7 @@
 \newcommand*{\argmin}{\mathop{\mathrm{argmin}}}
 \newcommand*{\argmax}{\mathop{\mathrm{argmax}}}
 \newcommand{\sgn}{\mathop{\mathrm{sign}}}
+\newcommand{\suchthat}{\mathrm{s.t.}}
 \newcommand{\tr}{\mathop{\mathrm{tr}}}
 \DeclareMathOperator*{\Var}{{\rm Var}}
 \DeclareMathOperator*{\Corr}{Corr}
@@ -145,10 +148,20 @@
 \newcommand{\diam}{{\bf{\rm diam}}}
 \newcommand{\spann}{{\bf{\rm span}}}
 
+% Hypographs and Epigraphs
+\newcommand{\epi}{{\bf{\rm epi}}}
+\newcommand{\hypo}{{\bf{\rm hypo}}}
+% suppport domain etc
+\newcommand{\supp}{{\bf{\rm supp}}}
+\newcommand{\dom}{{\bf{\rm dom}}}
+
 \def\iid{{\it i.i.d.}}
 \newcommand{\iidsim}{\stackrel{{iid}}{\sim}}
 \def\bks{\backslash}
 
+% Ceil & Floor
+\newcommand{\ceil}[1]{\lceil #1 \rceil}
+\newcommand{\floor}[1]{\lfloor #1 \rfloor}
 
 % bold greek letters
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -271,6 +284,8 @@
 \newcommand{\horizontalline}{\noindent\rule[0.5ex]{\linewidth}{1pt}}
 \newcommand{\HRule}{\rule{\linewidth}{0.5mm}} 
 \newcommand{\Hrule}{\rule{\linewidth}{0.3mm}}
+\newcommand{\HRuleN}{\HRule\\} 
+\newcommand{\HruleN}{\Hrule\\}
 \newcommand{\superscript}[1]{{\scriptsize \ensuremath{^{\textrm{#1}}}}}
 \newcommand{\supindex}[2]{#1^{(#2)}}
 \newcommand{\xii}[1]{\supindex{x}{#1}}

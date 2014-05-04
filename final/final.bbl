@@ -1,0 +1,36 @@
+\begin{thebibliography}{HRdF06}
+
+\bibitem[HdF04]{hamze2004fields}
+Firas Hamze and Nando de~Freitas.
+\newblock {From Fields to Trees}.
+\newblock In {\em UAI}, pages 243--250, 2004.
+
+\bibitem[HRdF06]{hamze2006information}
+Firas Hamze, Jean-Noel Rivasseau, and Nando de~Freitas.
+\newblock {Information theory tools to rank MCMC algorithms on probabilistic
+  graphical models}.
+\newblock In {\em {Proceedings of the UCSD Workshop on Information Theory and
+  its Applications Invited Paper, San Diego, CA}}, 2006.
+
+\bibitem[Liu01]{liu01mcmcscicomp}
+Jun~S. Liu.
+\newblock {\em {Monte Carlo strategies in Scientific computing}}.
+\newblock Springer, 2001.
+
+\bibitem[LWK94]{liu94covargibbs}
+J.~S. Liu, W.~H. Wong, and A.~Kong.
+\newblock {Covariance structure of the Gibbs sampler with applications to the
+  comparisons of estimators and augmentation schemes}.
+\newblock {\em Biometrika}, 81(1):27--40, March 1994.
+
+\bibitem[Riv05]{rivasseau2005jungle}
+Jean-No{\"e}l Rivasseau.
+\newblock {\em {From the jungle to the garden: Growing trees for Markov Chain
+  Monte Carlo inference in undirected graphical models}}.
+\newblock PhD thesis, Citeseer, 2005.
+
+\bibitem[Sch07]{schmidt07ugm}
+Mark Schmidt.
+\newblock {UGM: Matlab Code for Undirected Graphical Models}, 2007.
+
+\end{thebibliography}

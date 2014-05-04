@@ -30,8 +30,8 @@
 
 \newcommand{\fix}{\marginpar{FIX}}
 \newcommand{\new}{\marginpar{NEW}}
-\newcommand{\comment}[1]{\textcolor{magenta}{[#1]}}
-% \renewcommand{\comment}[1]{}
+% \newcommand{\comment}[1]{\textcolor{magenta}{[#1]}}
+\newcommand{\comment}[1]{}
 
 \nipsfinalcopy % Uncomment for camera-ready version
 
@@ -212,13 +212,22 @@ given,
 a graphical model, we now treat it as a weighted graph with the weights on edges
 capturing the correlation between the variables at its ends. Our problem now is
 to find tree partitions of this graph so as to maximize the intra-tree weights.
-But this problem is NP-hard. We will include a proof of this in our final
-report. In the following section, we outline some heuristic
+
+This leaves us with two challenges, The first 
+is to weight any given graphical model using an
+appropriate measure of correlation. Generally, this problem is nontrivial. We
+discuss this issue and present our work around in
+Section~\ref{sec:edgeweighting}. 
+The second is to partition a graph into trees given such a weighting. 
+This problem is NP-hard. In Section~\ref{sec:tpalgos}, we outline some heuristic
 algorithms to achieve this objective.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Methods}
+
+\subsection{Tree-Partitioning Algorithms}
+\label{sec:tpalgos}
 
 In order to employ blocked Gibbs sampling on our graphical model, we first partition the underlying graph into blocks. Inference on the blocks must be tractable, so we require the edges between vertices within a block to be a tree. We call the partitioning of a graph into blocks a splitting, which we define precisely as follows.
 
@@ -282,7 +291,6 @@ where $N(u)$ is the set of neighbor vertices to $u$, and $V$ is the set of uncol
 \end{framed}
 
 Next, we present our contribution, the greedy edge selection algorithm. In our algorithm, we greedily select edges favoring edges of high correlation. To this end, we weight the edges by correlation.
-\textcolor{red}{How to determine weights based on correlation??}
 
 \begin{framed}
 \noindent\textbf{Greedy Edge Selection Algorithm}
@@ -322,7 +330,7 @@ Next, we present our contribution, the greedy edge selection algorithm. In our a
 \item For each vertex $i$, if $V[i]=0$, set $V[i]=unusedColor$, $unusedColor++$
 \item Output $\{T_j:T_j\neq\emptyset\}$
 \end{enumerate}
-\vspace{10mm}
+\vspace{5mm}
 
 \noindent\textbf{getOtherNeighborColors(S, e)}
 \begin{enumerate}
@@ -336,60 +344,84 @@ Next, we present our contribution, the greedy edge selection algorithm. In our a
 \end{framed}
 
 
+\subsection{Edge Weighting}
+\label{sec:edgeweighting}
+
+We now turn to the problem of how we may weight these edges given a graphical
+model. Generally, this problem is NP-hard. Even for the relatively simple class
+of log-linear models it is not possible to estimate the correlations between two
+variables directly. One technique is to sample from the model (say via a Gibbs
+sampler) and estimate the correlation using the sample -- but this obviously
+defeats the purpose since our very objective is to speed up the Gibbs Sampler.
+This paints a rather bleak picture of the proposed strategy and at this point,
+we unfortunately do not have a satisfying solution to it.
+
+But in some cases this information could come via Expert knowledge. For example,
+in large networks in computational biology etc. expert knowledge is already used
+to group correlated variables together. In such situations our method is
+applicable. Next there could be situations in which you repeat the same
+inference task on a given graphical model under different observations. In such
+situations we could run a Naive Gibbs sampler on a prototype observation and use
+it to estimate the correlations. Then on subsequet inference procedures we use a
+blocked gibbs sampler with tree blocks partitioned using the weights thus
+learned. Even though observations do play an important role as when conditioned
+any two variables could become more or less correlated - it is fair to assume
+that they would be a reasoanable approximation to the actual correlations.
+
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Experiments}
 
 \subsection{MCMC}%%%%%%
 
-We have been able to
-partially recreate some of the experiments in \cite{hamze2004fields}. We
-test only on Markov Networks with discrete states and use the Matlab library
-available at \cite{schmidt07ugm}.
-
-The first experiment we recreated was Figure 6 in \cite{hamze2004fields}. We
-created a $10 \times 10$ grid graph and assigned $15$ possible states (with
-numeric value $1$ to $15$) to each node. We compare how fast each strategy mixes
-by running the sampler for $100$ iterations and studying how quickly a node
-converges to its expected value. We initialize all nodes at state $1$ and report
-the average results over $100$ trials.
-
-We perform the above experiment on two different edge potentials to this grid
-graph. In the first we assign equal potential to all pairs of
-states for the neighboring nodes; i.e. the edge potential is a $15 \times 15$
-all ones matrix. Such a potential mixes fast and hence we can't really expect a
-Naive Gibbs sampler to perform badly. In fact, our experiments showed that the
-performance of all $3$ strategies were incomparable -- see
-Figure~\ref{fig:nodeprogunif}. Next we created random edge potentials but had
-high potentials for neighbors assuming similar states; i.e. the edge potential
-is a random matrix but with the diagonals being $5-6$ times larger than the off
-diagonals. Here, we found that the Two-Tree sampler outperforms the CheckerBoard
-and Naive Gibbs Samplers but the performance of the latter two were
-incomparable -- see Figure~\ref{fig:nodeprogrand}.
-
-\begin{figure}
-\centering
-  \subfigure[Uniform Potentials]{
-  \includegraphics[width=2.5in]{figures/node_progress_uniform}
-  \label{fig:nodeprogunif}
-  }
-  \subfigure[Random Potentials]{
-  \includegraphics[width=2.5in]{figures/node_progress_random}
-  \label{fig:nodeprogrand}
-  }
-\caption[]{Comparison of the performance of the Naive Gibbs, CheckerBoard and
-Two-Tree Samplers in \cite{hamze2004fields}. Figure~\subref{fig:nodeprogunif} is
-for a grid graph with uniform edge potentials and
-Figure~\subref{fig:nodeprogrand} is for edge potentials with strong diagonals.}
-\label{fig:gibbsResults}
-\end{figure}
-
-Note that the comparisons are based on the number of iterations and not
-computation time - which obviously is unfair to the Naive Gibbs Sampler. But
-we have not included a computation time based comparison for a few reasons - one
-of them being that our library has a fast $C++$ implementation for Naive Gibbs
-and a slow Matlab implementation of Tree Sampling. We intend to correct this in
-the future.
+% We have been able to
+% partially recreate some of the experiments in \cite{hamze2004fields}. We
+% test only on Markov Networks with discrete states and use the Matlab library
+% available at \cite{schmidt07ugm}.
+% 
+% The first experiment we recreated was Figure 6 in \cite{hamze2004fields}. We
+% created a $10 \times 10$ grid graph and assigned $15$ possible states (with
+% numeric value $1$ to $15$) to each node. We compare how fast each strategy mixes
+% by running the sampler for $100$ iterations and studying how quickly a node
+% converges to its expected value. We initialize all nodes at state $1$ and report
+% the average results over $100$ trials.
+% 
+% We perform the above experiment on two different edge potentials to this grid
+% graph. In the first we assign equal potential to all pairs of
+% states for the neighboring nodes; i.e. the edge potential is a $15 \times 15$
+% all ones matrix. Such a potential mixes fast and hence we can't really expect a
+% Naive Gibbs sampler to perform badly. In fact, our experiments showed that the
+% performance of all $3$ strategies were incomparable -- see
+% Figure~\ref{fig:nodeprogunif}. Next we created random edge potentials but had
+% high potentials for neighbors assuming similar states; i.e. the edge potential
+% is a random matrix but with the diagonals being $5-6$ times larger than the off
+% diagonals. Here, we found that the Two-Tree sampler outperforms the CheckerBoard
+% and Naive Gibbs Samplers but the performance of the latter two were
+% incomparable -- see Figure~\ref{fig:nodeprogrand}.
+% 
+% \begin{figure}
+% \centering
+%   \subfigure[Uniform Potentials]{
+%   \includegraphics[width=2.5in]{figures/node_progress_uniform}
+%   \label{fig:nodeprogunif}
+%   }
+%   \subfigure[Random Potentials]{
+%   \includegraphics[width=2.5in]{figures/node_progress_random}
+%   \label{fig:nodeprogrand}
+%   }
+% \caption[]{Comparison of the performance of the Naive Gibbs, CheckerBoard and
+% Two-Tree Samplers in \cite{hamze2004fields}. Figure~\subref{fig:nodeprogunif} is
+% for a grid graph with uniform edge potentials and
+% Figure~\subref{fig:nodeprogrand} is for edge potentials with strong diagonals.}
+% \label{fig:gibbsResults}
+% \end{figure}
+% 
+% Note that the comparisons are based on the number of iterations and not
+% computation time - which obviously is unfair to the Naive Gibbs Sampler. But
+% we have not included a computation time based comparison for a few reasons - one
+% of them being that our library has a fast $C++$ implementation for Naive Gibbs
+% and a slow Matlab implementation of Tree Sampling. We intend to correct this in
+% the future.
 
 We also partially recreated the image reconstruction experiment
 from~\cite{hamze2004fields}. In this experiment, a randomly generated image of
@@ -427,32 +459,57 @@ Two-Tree Samplers using the Rao-Blackwellized on image reconstruction task from 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
 \section{Conclusion}
 
+We proposed a method to develop tree partitions for efficient blocked Gibbs
+Samplers. The primary idea was to weight the edges of the graphical model
+according to the correlation of the two variables and then convert it into a
+tree partitioning problem. The objective in tree partitioning is to preserve the
+high weight (highly correlated) edges within the trees and remove the low
+weight edges. We outlined two heuristics to perform this which performed
+reasonably well on our experiments.
+
+Yet there are several points of concern in our work. The first is that there
+is no straightforward way to estimate the correlation between two variables in a
+graphical model without performing an actual inference task itself. At best, we
+only know of some cheap ways to approximate this. However, trees partitioned
+this way could still work well in practice. Second, while we did achieve faster
+mixing in terms of iterations, when you factor in computation time the Naive
+Gibbs Sampler beats tree sampling since it is computationally much cheaper. With
+faster tree sampling implementations, we hope that we would be able to break
+this barrier though.
+Third, in many graphical models
+especially sparse high dimensional ones - the tree structure encodes a
+significant amount of the dependence structure. That is, two variables connected
+by an edge in a graphical model are quite likely to be correlated themselves. In
+such situations, it is not clear that our method would significantly outperform
+(say) a random tree partitioning strategy.
+
 \bibliographystyle{alpha} 
 \bibliography{kky,final}     
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%% 
-\section*{APPENDIX}
-\noindent Work division so far:
-\begin{itemize}
-\item Wenlu- Implementing $k$-splitting algorithms.
-\item Kirthevasan- Implementing random graph generating, recreating experiments from \cite{hamze2006information}.
-\item Joseph- Implementing Rao-Blackwellized variant from \cite{hamze2006information} on top of UGM library, recreating experiments from \cite{hamze2006information}.
-\item Elara- Working on $k$-splitting algorithm design.
-\end{itemize}
+% \section*{APPENDIX}
+% \noindent Work division so far:
+% \begin{itemize}
+% \item Wenlu- Implementing $k$-splitting algorithms.
+% \item Kirthevasan- Implementing random graph generating, recreating experiments from \cite{hamze2006information}.
+% \item Joseph- Implementing Rao-Blackwellized variant from \cite{hamze2006information} on top of UGM library, recreating experiments from \cite{hamze2006information}.
+% \item Elara- Working on $k$-splitting algorithm design.
+% \end{itemize}
+% 
+% Problem we have run into so far: our initial attempts to recreate the
+% experiments from \cite{hamze2006information} without using the
+% Rao-Blackwellized estimator they discuss turned-up negative results.  That is,
+% the blocking strategies that they propose did not seem to have any advantage
+% over Naive Gibbs Sampling when we did not use the Rao-Blackwell estimator.
+% Later, we were able to confirm an effect using the RB estimator, and when
+% working with non-uniform edge potentials, as we describe in the experimental
+% section. We still need to do further work to understand the effects of the
+% Rao-Blackwellization/non-uniform edge potentials.
+% 
+% \noindent Plan until the final:
+% \begin{itemize}
+% \item Run experiments using $k$-splitting algorithms.
+% \item Implement a better greedy rule for unweighted graphs.
+% \end{itemize}
 
-Problem we have run into so far: our initial attempts to recreate the
-experiments from \cite{hamze2006information} without using the
-Rao-Blackwellized estimator they discuss turned-up negative results.  That is,
-the blocking strategies that they propose did not seem to have any advantage
-over Naive Gibbs Sampling when we did not use the Rao-Blackwell estimator.
-Later, we were able to confirm an effect using the RB estimator, and when
-working with non-uniform edge potentials, as we describe in the experimental
-section. We still need to do further work to understand the effects of the
-Rao-Blackwellization/non-uniform edge potentials.
-
-\noindent Plan until the final:
-\begin{itemize}
-\item Run experiments using $k$-splitting algorithms.
-\item Implement a better greedy rule for unweighted graphs.
-\end{itemize}
 \end{document}
