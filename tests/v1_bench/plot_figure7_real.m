@@ -6,11 +6,12 @@ groupHF = dlmread('hf.mat');
 
 figure;
 hold on;
-errorbar(mean(groupNaive), std(groupNaive)/sqrt(30), 'b-o');
-errorbar(mean(groupCB), std(groupCB)/sqrt(30), 'r-x');
-errorbar(mean(groupHF), std(groupHF)/sqrt(30), 'g-+');
-errorbar(mean(groupGT), std(groupGT)/sqrt(30), 'm-.');
-errorbar(mean(groupGE), std(groupGE)/sqrt(30), 'k-^');
+[numtrials junk] = size(groupNaive)
+errorbar(mean(groupNaive), std(groupNaive)/sqrt(numtrials), 'b-o');
+errorbar(mean(groupCB), std(groupCB)/sqrt(numtrials), 'r-x');
+errorbar(mean(groupHF), std(groupHF)/sqrt(numtrials), 'g-+');
+errorbar(mean(groupGT), std(groupGT)/sqrt(numtrials), 'm-.');
+errorbar(mean(groupGE), std(groupGE)/sqrt(numtrials), 'k-^');
 %set(gca, 'Yscale', 'log');
 ylim([0.2 0.75])
 xlim([0 10])
@@ -22,10 +23,10 @@ legend('Naive', 'Checker Board', 'Hamze-Freitas Two Trees', 'Greedy Tree', 'Gree
 
 %figure;
 %hold on;
-%errorbar(mean(groupCB), std(groupCB)/sqrt(30), 'r-x');
-%errorbar(mean(groupHF), std(groupHF)/sqrt(30), 'g-+');
-%errorbar(mean(groupGT), std(groupGT)/sqrt(30), 'm-.');
-%errorbar(mean(groupGE), std(groupGE)/sqrt(30), 'k-^');
+%errorbar(mean(groupCB), std(groupCB)/sqrt(numtrials), 'r-x');
+%errorbar(mean(groupHF), std(groupHF)/sqrt(numtrials), 'g-+');
+%errorbar(mean(groupGT), std(groupGT)/sqrt(numtrials), 'm-.');
+%errorbar(mean(groupGE), std(groupGE)/sqrt(numtrials), 'k-^');
 %%set(gca, 'Yscale', 'log');
 %ylim([0.2 0.45])
 %xlim([0 10])

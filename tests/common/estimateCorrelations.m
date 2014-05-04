@@ -38,8 +38,8 @@ function corrGraph = estimateCorrelations(nodePot, ...
     covarVals = bsxfun(@minus, edgeSamples, edgeMeans);
     covar = mean(covarVals(1,:) .* covarVals(2,:));
     currCorr = covar/ prod(edgeStds);
-    corrGraph(n1, n2) = currCorr;
-    corrGraph(n2, n1) = currCorr;
+    corrGraph(n1, n2) = 1 + abs(currCorr);
+    corrGraph(n2, n1) = 1 + abs(currCorr);
   end
 
 end

@@ -11,7 +11,7 @@ image = image/downrate;
 nStates = 256/downrate;
 nNodes = nRows * nCols;
 
-rounds = 1
+rounds = 1;
 
 groupNaive = [];
 groupCB = [];
@@ -26,9 +26,9 @@ groupHF = [];
 % How many pixels to flip
 noiseLevel = nNodes * .25;
 
-figure(1);
-imagesc(image);
-colormap gray
+%figure(1);
+%imagesc(image);
+%colormap gray
 
 %% Add noise
 display('Noising.')
@@ -81,8 +81,8 @@ repblock = ones(nStates, nStates) + diag(repmat(2, nStates, 1));
 edgePot = repmat(repblock,[1 1 edgeStruct.nEdges]);
 
 %%figure(2);
-imagesc(noisyImage);
-colormap gray
+%imagesc(noisyImage);
+%colormap gray
 
 burnIn = 0;
 iterRange = 10;
@@ -143,13 +143,17 @@ b1Ind = nNodes/2;
 blocks = {blocks1;blocks2};
 
 errorRatesBlockCB = reconstruct(image, nRows, nCols, nodePot, edgePot, edgeStruct, burnIn, blocks, initial, maxSteps, stepSize)
-colorsCB = plot_blocks(blocks, nRows, nCols)
+colorsCB = plot_blocks(blocks, nRows, nCols);
 %%% Greedy Tree + Edge
 
 tic;
 display('Computing correlations.')
 corrGraph = estimateCorrelations(nodePot, edgePot, edgeStruct, 10, 100);
 toc
+
+%%% Adjust corrGraph so that there are no missing/phantom edges
+%corrGraph = abs(corrGraph);
+%corrGraph = corrGraph .* adj + adj;
 
 display('Partitioning -- GreedyEdge')
 partition = treePartition('GreedyEdge', corrGraph, 20);
@@ -159,6 +163,7 @@ errorRatesBlockGE = reconstruct(image, nRows, nCols, nodePot, edgePot, edgeStruc
 
 display('Partitioning -- GreedyTree')
 partition = treePartition('GreedyTree', corrGraph, 20);
+%partition = treePartition('GreedyTree', sparse(adj), 20);
 blocks = partition_to_blocks(partition);
 colorsGT = plot_blocks(blocks, nRows, nCols);
 errorRatesBlockGT = reconstruct(image, nRows, nCols, nodePot, edgePot, edgeStruct, burnIn, blocks, initial, maxSteps, stepSize)
