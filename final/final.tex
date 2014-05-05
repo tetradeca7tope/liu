@@ -229,7 +229,11 @@ algorithms to achieve this objective.
 \subsection{Tree-Partitioning Algorithms}
 \label{sec:tpalgos}
 
-In order to employ blocked Gibbs sampling on our graphical model, we first partition the underlying graph into blocks. Inference on the blocks must be tractable, so we require the edges between vertices within a block to be a tree. We call the partitioning of a graph into blocks a splitting, which we define precisely as follows.
+In order to employ blocked Gibbs sampling on our graphical model, we
+first partition the underlying graph into blocks. Inference on the
+blocks must be tractable, so we require the edges between vertices
+within a block to be a tree. We call the partitioning of a graph into
+blocks a splitting, which we define precisely as follows.
 
 \noindent\textbf{$k$-Splitting:} Given a graph $G=(V,E)$, parameter $k$, and a weight function $w:E\rightarrow R$, output trees $T_1=(V_1,E_1),...,T_k=(V_k,E_k)$ such that:
 \begin{enumerate}
@@ -257,14 +261,14 @@ This tells us that in the unit weight case, the weight is maximized by minimizin
 \noindent\textbf{General-weight Objective:} Find a splitting with a small weight.
 
 \subsection{Splitting Algorithms}%%%%%%
-For a baseline, we consider a weighted-edge variant of the splitting algorithm from \cite{rivasseau2005jungle}. For their algorithm, they greedily grow trees favoring vertices of low degree. We present a slightly simplified version below which also tries to incorporate edge weights. The priority queue is defined by
-\noindent\textbf{compare(u,v)}: 
-\[
-|V\cap N(u)|>|V\cap N(v)| \iff u<v
-\]
-where $N(u)$ is the set of neighbor vertices to $u$, and $V$ is the set of uncolored vertices. Thus, we favor vertices with fewer uncolored neighbors.
+For a baseline, we consider a weighted-edge variant of the splitting
+algorithm from \cite{rivasseau2005jungle}. For their algorithm, they
+greedily grow trees favoring vertices of low degree. We present a
+slightly modified version below which also tries to incorporate edge
+weights. We use the edge weights as priority in the queue to favor
+edges with large weights.
 
-\noindent Below is a simplified version of their algorithm that tries to use edge weights.\\
+\noindent Below is our modified version of their algorithm that tries to use edge weights.\\
 
 \begin{framed}
 \noindent\textbf{Greedy Tree Growing Algorithm \cite{rivasseau2005jungle}}
@@ -281,8 +285,9 @@ where $N(u)$ is the set of neighbor vertices to $u$, and $V$ is the set of uncol
 \item For all $v\in T_i$, if $u\in N(v)$, increment $neighborsInT$
 \item If $neighborsInT\le1$,
 \begin{itemize}
-\item Add $u$ to $T_i$ and remove $v$ from $V$
-\item Add $N(u)$ to $Q_i$.
+\item Add $u$ to $T_i$ and remove $u$ from $V$
+\item Add $N(u)$ to $Q_i$, and use the edge weights between $N(u)$ and
+	$u$ as the priority.
 \end{itemize}
 \end{itemize}
 \end{itemize}
