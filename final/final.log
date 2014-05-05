@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.10.9)  4 MAY 2014 21:57
+This is pdfTeX, Version 3.1415926-1.40.10 (TeX Live 2009/Debian) (format=pdflatex 2013.10.9)  4 MAY 2014 22:07
 entering extended mode
  %&-line parsing enabled.
 **final.tex final
@@ -336,77 +336,30 @@ LaTeX Info: Redefining \bm on input line 204.
 \c@property=\count122
 Package hyperref Info: Option `colorlinks' set `true' on input line 277.
 Package hyperref Info: Option `breaklinks' set `true' on input line 277.
-)
-(/usr/share/texmf-texlive/tex/latex/tools/multicol.sty
-Package: multicol 2008/12/05 v1.6h multicolumn formatting (FMi)
-\c@tracingmulticols=\count123
-\mult@box=\box30
-\multicol@leftmargin=\dimen129
-\c@unbalance=\count124
-\c@collectmore=\count125
-\doublecol@number=\count126
-\multicoltolerance=\count127
-\multicolpretolerance=\count128
-\full@width=\dimen130
-\page@free=\dimen131
-\premulticols=\dimen132
-\postmulticols=\dimen133
-\multicolsep=\skip58
-\multicolbaselineskip=\skip59
-\partial@page=\box31
-\last@line=\box32
-\mult@rightbox=\box33
-\mult@grightbox=\box34
-\mult@gfirstbox=\box35
-\mult@firstbox=\box36
-\@tempa=\box37
-\@tempa=\box38
-\@tempa=\box39
-\@tempa=\box40
-\@tempa=\box41
-\@tempa=\box42
-\@tempa=\box43
-\@tempa=\box44
-\@tempa=\box45
-\@tempa=\box46
-\@tempa=\box47
-\@tempa=\box48
-\@tempa=\box49
-\@tempa=\box50
-\@tempa=\box51
-\@tempa=\box52
-\@tempa=\box53
-\c@columnbadness=\count129
-\c@finalcolumnbadness=\count130
-\last@try=\dimen134
-\multicolovershoot=\dimen135
-\multicolundershoot=\dimen136
-\mult@nat@firstbox=\box54
-\colbreak@box=\box55
 ) (./final.aux)
 \openout1 = `final.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 39.
-LaTeX Font Info:    ... okay on input line 39.
-LaTeX Font Info:    Try loading font information for OT1+ptm on input line 39.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 38.
+LaTeX Font Info:    ... okay on input line 38.
+LaTeX Font Info:    Try loading font information for OT1+ptm on input line 38.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1ptm.fd
 File: ot1ptm.fd 2001/06/04 font definitions for OT1/ptm.
 )
 ABD: EveryShipout initializing macros
-Package hyperref Info: Link coloring ON on input line 39.
+Package hyperref Info: Link coloring ON on input line 38.
 
 (/usr/share/texmf-texlive/tex/latex/hyperref/nameref.sty
 Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
@@ -414,49 +367,49 @@ Package: nameref 2007/05/29 v2.31 Cross-referencing by name of section
 (/usr/share/texmf-texlive/tex/latex/oberdiek/refcount.sty
 Package: refcount 2008/08/11 v3.1 Data extraction from references (HO)
 )
-\c@section@level=\count131
+\c@section@level=\count123
 )
-LaTeX Info: Redefining \ref on input line 39.
-LaTeX Info: Redefining \pageref on input line 39.
+LaTeX Info: Redefining \ref on input line 38.
+LaTeX Info: Redefining \pageref on input line 38.
  (./final.out)
 (./final.out)
 \@outlinefile=\write3
 \openout3 = `final.out'.
 
-\AtBeginShipoutBox=\box56
+\AtBeginShipoutBox=\box30
  (/usr/share/texmf-texlive/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count132
-\scratchdimen=\dimen137
-\scratchbox=\box57
-\nofMPsegments=\count133
-\nofMParguments=\count134
+\scratchcounter=\count124
+\scratchdimen=\dimen129
+\scratchbox=\box31
+\nofMPsegments=\count125
+\nofMParguments=\count126
 \everyMPshowfont=\toks27
-\MPscratchCnt=\count135
-\MPscratchDim=\dimen138
-\MPnumerator=\count136
+\MPscratchCnt=\count127
+\MPscratchDim=\dimen130
+\MPnumerator=\count128
 \everyMPtoPDFconversion=\toks28
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <17.28> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 41.
-LaTeX Font Info:    Try loading font information for U+msa on input line 41.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
+LaTeX Font Info:    Try loading font information for U+msa on input line 40.
  (/usr/share/texmf-texlive/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2009/06/22 v3.00 AMS symbols A
 )
-LaTeX Font Info:    Try loading font information for U+msb on input line 41.
+LaTeX Font Info:    Try loading font information for U+msb on input line 40.
 
 (/usr/share/texmf-texlive/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2009/06/22 v3.00 AMS symbols B
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <10> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 41.
-LaTeX Font Info:    Try loading font information for OT1+pcr on input line 41.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 40.
+LaTeX Font Info:    Try loading font information for OT1+pcr on input line 40.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/ot1pcr.fd
 File: ot1pcr.fd 2001/06/04 font definitions for OT1/pcr.
 )
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 52.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 51.
 
 <figures/orig_graph.pdf, id=53, 280.77698pt x 263.78549pt>
 File: figures/orig_graph.pdf Graphic file (type pdf)
@@ -482,17 +435,17 @@ ee2.pdf>] <STvKS.png, id=112, 455.7025pt x 159.59625pt>
 File: STvKS.png Graphic file (type png)
  <use STvKS.png>
 [3 <./STvKS.png>]
-Underfull \hbox (badness 10000) in paragraph at lines 268--269
+Underfull \hbox (badness 10000) in paragraph at lines 267--268
 
  []
 
-LaTeX Font Info:    Try loading font information for OMS+ptm on input line 276.
+LaTeX Font Info:    Try loading font information for OMS+ptm on input line 275.
 
 (/usr/share/texmf-texlive/tex/latex/psnfss/omsptm.fd
 File: omsptm.fd 
 )
 LaTeX Font Info:    Font shape `OMS/ptm/m/n' in size <10> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 276.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 275.
  [4]
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
@@ -504,46 +457,39 @@ File: figures/TotalTrees-Vs-MaxTreeSize.png Graphic file (type png)
 <figures/MedianTreeSize-Vs-MaxTreeSize.png, id=159, 572.1375pt x 423.5825pt>
 File: figures/MedianTreeSize-Vs-MaxTreeSize.png Graphic file (type png)
 
-<use figures/MedianTreeSize-Vs-MaxTreeSize.png>
-Overfull \hbox (48.03503pt too wide) in paragraph at lines 412--418
-[][] [][] 
- []
-
-[6 <./figures/TotalTrees-Vs-MaxTreeSize.png> <./figures/MedianTreeSize-Vs-MaxTr
-eeSize.png>] <figures/block_maps.png, id=179, 676.126pt x 782.925pt>
+<use figures/MedianTreeSize-Vs-MaxTreeSize.png> [6 <./figures/TotalTrees-Vs-Max
+TreeSize.png> <./figures/MedianTreeSize-Vs-MaxTreeSize.png>]
+<figures/block_maps.png, id=180, 676.126pt x 782.925pt>
 File: figures/block_maps.png Graphic file (type png)
 
 <use figures/block_maps.png>
-<figures/figure7_real.png, id=180, 676.126pt x 368.577pt>
+<figures/figure7_real.png, id=181, 676.126pt x 368.577pt>
 File: figures/figure7_real.png Graphic file (type png)
 
 <use figures/figure7_real.png> [7 <./figures/block_maps.png (PNG copy)>]
-(./final.bbl) [8 <./figures/figure7_real.png (PNG copy)>] (./final.aux)
-
-LaTeX Warning: Label(s) may have changed. Rerun to get cross-references right.
-
- ) 
+(./final.bbl) [8 <./figures/figure7_real.png (PNG copy)>] (./final.aux) ) 
 Here is how much of TeX's memory you used:
- 6462 strings out of 493848
- 89331 string characters out of 1152823
- 171872 words of memory out of 3000000
- 9529 multiletter control sequences out of 15000+50000
+ 6375 strings out of 493848
+ 88057 string characters out of 1152823
+ 168200 words of memory out of 3000000
+ 9445 multiletter control sequences out of 15000+50000
  22018 words of font info for 52 fonts, out of 3000000 for 9000
  714 hyphenation exceptions out of 8191
  38i,10n,36p,410b,366s stack positions out of 5000i,500n,10000p,200000b,50000s
-{/usr/share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texli
-ve/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/ty
-pe1/public/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/
-amsfonts/cm/cmmi5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/
-cmmi7.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></
-usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/tex
-mf-texlive/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/
-fonts/type1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/
-public/amsfonts/symbols/msbm10.pfb></usr/share/texmf-texlive/fonts/type1/urw/co
-urier/ucrr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></u
-sr/share/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texli
-ve/fonts/type1/urw/times/utmri8a.pfb>
-Output written on final.pdf (8 pages, 297987 bytes).
+{/usr/
+share/texmf-texlive/fonts/enc/dvips/base/8r.enc}</usr/share/texmf-texlive/fonts
+/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texmf-texlive/fonts/type1/publ
+ic/amsfonts/cm/cmmi10.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts
+/cm/cmmi5.pfb></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmmi7.pf
+b></usr/share/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/shar
+e/texmf-texlive/fonts/type1/public/amsfonts/cm/cmr7.pfb></usr/share/texmf-texli
+ve/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texmf-texlive/fonts/ty
+pe1/public/amsfonts/cm/cmsy7.pfb></usr/share/texmf-texlive/fonts/type1/public/a
+msfonts/symbols/msbm10.pfb></usr/share/texmf-texlive/fonts/type1/urw/courier/uc
+rr8a.pfb></usr/share/texmf-texlive/fonts/type1/urw/times/utmb8a.pfb></usr/share
+/texmf-texlive/fonts/type1/urw/times/utmr8a.pfb></usr/share/texmf-texlive/fonts
+/type1/urw/times/utmri8a.pfb>
+Output written on final.pdf (8 pages, 299201 bytes).
 PDF statistics:
  256 PDF objects out of 1000 (max. 8388607)
  61 named destinations out of 1000 (max. 500000)

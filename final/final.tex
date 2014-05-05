@@ -5,7 +5,6 @@
 \usepackage{subfigure}
 \usepackage{kky}
 \usepackage{url}
-\usepackage{multicol}
 %\documentstyle[nips13submit_09,times,art10]{article} % For LaTeX 2.09
 
 
@@ -405,13 +404,14 @@ tree size is no tighter than 10.
 
 
 \begin{figure}
+\centering
 \subfigure[Total number of trees as maximum tree size limit
 decreases.]{
-	\includegraphics[width=3in]{figures/TotalTrees-Vs-MaxTreeSize} 
+	\includegraphics[width=0.48\textwidth]{figures/TotalTrees-Vs-MaxTreeSize} 
 	\label{fig:treeResultsNumber}
 }
 \subfigure[Median tree size as maximum tree size limit decreases.]{
-	\includegraphics[width=3in]{figures/MedianTreeSize-Vs-MaxTreeSize}
+	\includegraphics[width=0.48\textwidth]{figures/MedianTreeSize-Vs-MaxTreeSize}
 	\label{fig:treeResultsMedian}
 }
 \caption{Comparing Greedy Edge Selection algorithm with Greedy Tree
