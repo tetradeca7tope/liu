@@ -1,11 +1,11 @@
-\BOOKMARK [1][-]{section.1}{Introduction}{}
-\BOOKMARK [1][-]{section.2}{Related Work}{}
-\BOOKMARK [1][-]{section.3}{Theory, Intuition and Insight to our Methods}{}
-\BOOKMARK [1][-]{section.4}{Methods}{}
-\BOOKMARK [2][-]{subsection.4.1}{Tree-Partitioning Algorithms}{section.4}
-\BOOKMARK [2][-]{subsection.4.2}{Splitting Algorithms}{section.4}
-\BOOKMARK [2][-]{subsection.4.3}{Edge Weighting}{section.4}
-\BOOKMARK [1][-]{section.5}{Experiments}{}
-\BOOKMARK [2][-]{subsection.5.1}{Tree Splitting}{section.5}
-\BOOKMARK [2][-]{subsection.5.2}{MCMC}{section.5}
-\BOOKMARK [1][-]{section.6}{Conclusion}{}
+\BOOKMARK [1][-]{section.1}{Introduction}{}% 1
+\BOOKMARK [1][-]{section.2}{Related Work}{}% 2
+\BOOKMARK [1][-]{section.3}{Theory, Intuition and Insight to our Methods}{}% 3
+\BOOKMARK [1][-]{section.4}{Methods}{}% 4
+\BOOKMARK [2][-]{subsection.4.1}{Tree-Partitioning Algorithms}{section.4}% 5
+\BOOKMARK [2][-]{subsection.4.2}{Splitting Algorithms}{section.4}% 6
+\BOOKMARK [2][-]{subsection.4.3}{Edge Weighting}{section.4}% 7
+\BOOKMARK [1][-]{section.5}{Experiments}{}% 8
+\BOOKMARK [2][-]{subsection.5.1}{Tree Splitting}{section.5}% 9
+\BOOKMARK [2][-]{subsection.5.2}{MCMC}{section.5}% 10
+\BOOKMARK [1][-]{section.6}{Conclusion}{}% 11
