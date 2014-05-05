@@ -257,14 +257,14 @@ This tells us that in the unit weight case, the weight is maximized by minimizin
 \noindent\textbf{General-weight Objective:} Find a splitting with a small weight.
 
 \subsection{Splitting Algorithms}%%%%%%
-For a baseline, we consider the splitting algorithm from \cite{rivasseau2005jungle}. For their algorithm, they greedily grow trees favoring vertices of low degree. We present a slightly simplified version below. The priority queue is defined by
+For a baseline, we consider a weighted-edge variant of the splitting algorithm from \cite{rivasseau2005jungle}. For their algorithm, they greedily grow trees favoring vertices of low degree. We present a slightly simplified version below which also tries to incorporate edge weights. The priority queue is defined by
 \noindent\textbf{compare(u,v)}: 
 \[
 |V\cap N(u)|>|V\cap N(v)| \iff u<v
 \]
 where $N(u)$ is the set of neighbor vertices to $u$, and $V$ is the set of uncolored vertices. Thus, we favor vertices with fewer uncolored neighbors.
 
-\noindent Here we present a slightly simplified version of their algorithm.\\
+\noindent Below is a simplified version of their algorithm that tries to use edge weights.\\
 
 \begin{framed}
 \noindent\textbf{Greedy Tree Growing Algorithm \cite{rivasseau2005jungle}}
@@ -383,7 +383,7 @@ correlated to fast convergence.
 
 The results in figure~\ref{fig:treeResultsNumber} and
 figure~\ref{fig:treeResultsMedian} show that our heuristic performs
-much better than the splitting algorithm
+much better than the weighted edge variant of the splitting algorithm
 from~\cite{rivasseau2005jungle}, when no other limits are imposed.
 The leftmost data points in figure~\ref{fig:treeResultsNumber} show
 that our heuristic generates half as many trees as the Greedy Tree
@@ -477,7 +477,7 @@ Growing algorithm}
 % test only on Markov Networks with discrete states and use the Matlab library
 % available at \cite{schmidt07ugm}.
 
-To compare these tree construction heuristics, we performed a variant of an
+To compare how these tree construction heuristics affect inference, we performed a variant of an
 image reconstruction test found in~\cite{hamze2004fields}. In this experiment,
 a $64\times64$ pixel test image was converted to grayscale, downsampled to a
 4-bit colorspace, and then corrupted by randomly flipping the color of $25\%$

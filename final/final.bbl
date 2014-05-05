@@ -31,6 +31,7 @@ Jean-No{\"e}l Rivasseau.
 
 \bibitem[Sch07]{schmidt07ugm}
 Mark Schmidt.
-\newblock {UGM: Matlab Code for Undirected Graphical Models}, 2007.
+\newblock {UGM: Matlab Code for Undirected Graphical Models}.
+\newblock \url{http://www.di.ens.fr/~mschmidt/Software/UGM.html}, 2007.
 
 \end{thebibliography}

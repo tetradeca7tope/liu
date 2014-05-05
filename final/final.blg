@@ -20,16 +20,16 @@ Repeated entry---line 49 of file final.bib
 I'm skipping whatever remains of this entry
 You've used 6 entries,
             2543 wiz_defined-function locations,
-            590 strings with 5319 characters,
-and the built_in function-call counts, 2163 in all, are:
-= -- 206
+            591 strings with 5373 characters,
+and the built_in function-call counts, 2174 in all, are:
+= -- 209
 > -- 93
 < -- 4
 + -- 30
 - -- 30
 * -- 135
-:= -- 360
-add.period$ -- 17
+:= -- 363
+add.period$ -- 18
 call.type$ -- 6
 change.case$ -- 33
 chr.to.int$ -- 6
@@ -37,17 +37,17 @@ cite$ -- 6
 duplicate$ -- 97
 empty$ -- 171
 format.name$ -- 39
-if$ -- 446
+if$ -- 449
 int.to.chr$ -- 1
 int.to.str$ -- 0
 missing$ -- 5
-newline$ -- 32
+newline$ -- 33
 num.names$ -- 18
-pop$ -- 45
+pop$ -- 44
 preamble$ -- 1
 purify$ -- 41
 quote$ -- 0
-skip$ -- 81
+skip$ -- 80
 stack$ -- 0
 substring$ -- 89
 swap$ -- 17
@@ -58,5 +58,5 @@ type$ -- 44
 warning$ -- 0
 while$ -- 19
 width$ -- 9
-write$ -- 75
+write$ -- 77
 (There were 3 error messages)
